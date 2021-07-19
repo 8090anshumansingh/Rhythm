@@ -1,0 +1,17 @@
+.register .form1 {
+  margin: 5px;
+  padding-bottom: 5px;
+}
+
+.register .button1 {
+  margin: 5px;
+  padding-bottom: 5px;
+}
+
+/* .login {
+  text-align: center;
+} */
+
+.register .btn-class {
+  text-align: center;
+}
