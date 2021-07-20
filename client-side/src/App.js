@@ -14,7 +14,7 @@ function App() {
               <h1>Rhythm</h1>
               <ul className="navbar-nav ulc ">
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/Login"}>
+                  <Link className="nav-link" to={"/login"}>
                     Login
                   </Link>
                 </li>
@@ -31,7 +31,7 @@ function App() {
         <div className="outer">
           <div className="inner">
             <Switch>
-              <Route exact path="/Login" component={Login} />
+              <Route exact path="/login" component={Login} />
               <Route path="/" component={Register} />
             </Switch>
           </div>

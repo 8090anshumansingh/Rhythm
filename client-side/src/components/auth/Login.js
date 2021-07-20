@@ -1,8 +1,54 @@
 import React from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/Login.css";
+import axios from "../../axios.js";
+import { useState } from "react";
 
 function Login() {
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const [msg, setMsg] = useState("");
+  const [isValid, setIsValid] = useState(false);
+
+  const inputChangeHandler = (e) => {
+    const { name, value } = e.target;
+
+    setUser((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
+
+  const submitHandler = async () => {
+    try {
+      const res = await axios.post("/user/login", user);
+      setUser({
+        email: "",
+        password: "",
+      });
+      console.log(res.data);
+      setMsg(res.data);
+      if (res.data === "login") {
+        setIsValid(true);
+      }
+      // history.push("/login");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
+
+    if (e.key === "Enter") {
+      submitHandler();
+    }
+  };
+
   return (
     <div className="login">
       <h3>Log in</h3>
@@ -10,6 +56,10 @@ function Login() {
       <div className="form-group form1">
         <label>Email</label>
         <input
+          onKeyPress={handleKeypress}
+          value={user.email}
+          onChange={inputChangeHandler}
+          name="email"
           type="email"
           className="form-control"
           placeholder="Enter email"
@@ -19,6 +69,10 @@ function Login() {
       <div className="form-group form1">
         <label>Password</label>
         <input
+          onKeyPress={handleKeypress}
+          value={user.password}
+          onChange={inputChangeHandler}
+          name="password"
           type="password"
           className="form-control"
           placeholder="Enter password"
@@ -37,9 +91,18 @@ function Login() {
           </label>
         </div>
       </div>
+      {!isValid && (
+        <div>
+          <p style={{ color: "red" }}>{msg}</p>
+        </div>
+      )}
       <div className="btn-class">
-        <button className="btn btn-dark btn-lg btn-block button1">
-          Sign in
+        <button
+          onKeyPress={handleKeypress}
+          onClick={submitHandler}
+          className="btn btn-dark btn-lg btn-block button1"
+        >
+          Log in
         </button>
       </div>
     </div>

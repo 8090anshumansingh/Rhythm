@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import Cors from "cors";
 import dotenv from "dotenv";
+import routes from "./routes/routes.js";
 
 dotenv.config();
 const app = express();
@@ -16,6 +17,8 @@ mongoose.connect(process.env.MONGO_URL, {
   useCreateIndex: true,
   useFindAndModify: false,
 });
+
+app.use("/", routes);
 
 app.get("/", (req, res) => {
   res.send("App deployed");
