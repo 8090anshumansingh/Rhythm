@@ -4,6 +4,7 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import axios from "../../axios.js";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Navbar from "../Navbars/Navbar.js";
 
 function Register() {
   const history = useHistory();
@@ -43,68 +44,75 @@ function Register() {
   };
 
   return (
-    <div className="register">
-      <h3>Register</h3>
+    <React.Fragment>
+      <Navbar />
+      <div className="register">
+        <div className="outer">
+          <div className="inner">
+            <h3>Register</h3>
 
-      <div className="form-group form1">
-        <label>First name</label>
-        <input
-          name="firstName"
-          onChange={inputChangeHandler}
-          type="text"
-          className="form-control"
-          placeholder="First name"
-          value={user.firstName}
-        />
-      </div>
+            <div className="form-group form1">
+              <label>First name</label>
+              <input
+                name="firstName"
+                onChange={inputChangeHandler}
+                type="text"
+                className="form-control"
+                placeholder="First name"
+                value={user.firstName}
+              />
+            </div>
 
-      <div className="form-group form1">
-        <label>Last name</label>
-        <input
-          name="lastName"
-          onChange={inputChangeHandler}
-          type="text"
-          className="form-control"
-          placeholder="Last name"
-          value={user.lastName}
-        />
-      </div>
+            <div className="form-group form1">
+              <label>Last name</label>
+              <input
+                name="lastName"
+                onChange={inputChangeHandler}
+                type="text"
+                className="form-control"
+                placeholder="Last name"
+                value={user.lastName}
+              />
+            </div>
 
-      <div className="form-group form1">
-        <label>Email</label>
-        <input
-          name="email"
-          onChange={inputChangeHandler}
-          type="email"
-          className="form-control"
-          placeholder="Enter email"
-          value={user.email}
-        />
-      </div>
+            <div className="form-group form1">
+              <label>Email</label>
+              <input
+                name="email"
+                onChange={inputChangeHandler}
+                type="email"
+                className="form-control"
+                placeholder="Enter email"
+                value={user.email}
+              />
+            </div>
 
-      <div className="form-group form1">
-        <label>Password</label>
-        <input
-          name="password"
-          onChange={inputChangeHandler}
-          type="password"
-          className="form-control"
-          placeholder="Enter password"
-          value={user.password}
-        />
+            <div className="form-group form1">
+              <label>Password</label>
+              <input
+                name="password"
+                onChange={inputChangeHandler}
+                type="password"
+                className="form-control"
+                placeholder="Enter password"
+                value={user.password}
+              />
+            </div>
+            <div className="btn-class">
+              <button
+                onClick={submitHandler}
+                className="btn btn-dark btn-lg btn-block button1"
+              >
+                Register
+              </button>
+            </div>
+            <p className="forgot-password text-right">
+              Already registered ? <a href="/Login">Log In</a>
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="btn-class">
-        <button
-          onClick={submitHandler}
-          className="btn btn-dark btn-lg btn-block button1"
-        >
-          Register
-        </button>
-      </div>
-      <p className="forgot-password text-right">
-        Already registered ? <a href="/Login">Log In</a>
-      </p>
-    </div>
+    </React.Fragment>
   );
 }
 

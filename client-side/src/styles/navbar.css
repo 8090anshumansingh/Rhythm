@@ -1,0 +1,14 @@
+.App .navbar1 {
+  display: flex;
+  justify-content: space-between;
+}
+.App .ulc {
+  position: absolute;
+  right: 50px;
+  /* margin-left: 100px; */
+}
+
+.navbar-light {
+  background-color: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+}
