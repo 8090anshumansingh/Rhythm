@@ -49,7 +49,7 @@ var spotifyApi = new SpotifyWebApi({
 app.use("/", routes);
 
 app.get("/", (req, res) => {
-  res.send("App deployed");
+  res.send("Happy Coding");
 });
 
 app.get("/verify", (req, res) => {

@@ -3,7 +3,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Login from "./components/auth/Login.js";
 import Register from "./components/auth/Register.js";
-import Search from "./components/search/search.js";
+import Search from "./components/search/Search.js";
 
 function App() {
   return (

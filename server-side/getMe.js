@@ -1,7 +1,7 @@
 import fs from "fs";
 import SpotifyWebApi from "spotify-web-api-node";
 const token =
-  "BQCVHU39knqDgrSWa1QivbOs9QKlJ5a2ZRo6Nh7wEbpN7C_5owYCZwH0lyKKchRSUN7dRU_eUYFZ5fMSkpdaBdyzlW4FFFQ8xnG26iRzzrHQBDyCtskVTZGRNbV4Wos36rmHQctcCj9SJUxfbzAckOERiwb16zTxrZRMtjLbflUJB-qavCC7cr2G511RaS2MepTtPuv9enQ2TZ5gNt1gO6cpwkiDoWnvgwV8ZvvtbxXXpmv9WMsbsJ07zV4qhqL6sO4BecI1WzhnNnsQZufcZj5DXNjzr_ttLLuYhMdUQXCjB9Ec";
+  "BQBezrDlJ7ttGQaCmxI__ZCCPcTVJY0Niyfib8nR82j12Tm2qZSu0RTzfDR27e-9pADWv-UtYo6wi3nKr-dT87JxI1wsLfRmZkBllRZpIJpLb87IFPQ26bJaYFptycwM8jGldjyKu3KtH9PQPffWsy-8otHHjoNOz_qnANv6yORe0qyGax1VagqxomzQmsvgPW4lfmFedpue8dDh62ySnkhXFZ6fYuX9ojQzW3Mw6fBwr_2CWdFcpHpKRqpU_9s1Yj5jrkjcJww5J9Beavrlku-WeARXZrRcKPOuI_8vpe_rNYat";
 
 const spotifyApi = new SpotifyWebApi();
 spotifyApi.setAccessToken(token);
@@ -35,7 +35,7 @@ async function getUserPlaylists(userName) {
     // console.log("name :", data[0].name);
     // console.log("artist :", data[0].artists[0].name);
     // console.log("name :", data[0].preview_url);
-    // fs.writeFileSync(playlist.name + ".json", data);
+    fs.writeFileSync(playlist.name + ".json", data);
   }
 }
 
@@ -43,21 +43,41 @@ async function getUserPlaylists(userName) {
 async function getPlaylistTracks(playlistId, playlistName) {
   const data = await spotifyApi.getPlaylistTracks(playlistId, {
     offset: 1,
-    limit: 1,
+    limit: 100,
     fields: "items",
   });
 
   // console.log("The playlist contains these tracks", data.body);
   // console.log('The playlist contains these tracks: ', data.body.items[0].track);
-  console.log("'" + playlistName + "'" + " contains these tracks:");
+  // console.log("'" + playlistName + "'" + " contains these tracks:");
   let tracks = [];
 
   for (let track_obj of data.body.items) {
     const track = track_obj.track;
-    tracks.push(track);
-    console.log(track);
+
+    // console.log(track);
+
+    var newTrack = {
+      title: track.name,
+      artist: track.artists[0].name,
+      preview_url: track.preview_url,
+      duration: track.duration_ms,
+      album: track.album.name,
+      image: track.album.images[2].url,
+    };
+    tracks.push(newTrack);
     // console.log(
-    //   track.name + " : " + track.artists[0].name + " : " + track.preview_url
+    //   track.name +
+    //     " : " +
+    //     track.artists[0].name +
+    //     " : " +
+    //     track.preview_url +
+    //     " : " +
+    //     track.duration_ms +
+    //     " : " +
+    //     track.album.name +
+    //     " : " +
+    //     track.album.images[2].url
     // );
   }
 

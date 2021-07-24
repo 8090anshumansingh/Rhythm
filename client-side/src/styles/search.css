@@ -56,6 +56,42 @@ body {
   background-color: black;
 }
 
+.boxes {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.boxes td,
+.boxes th {
+  padding: 8px;
+  color: white;
+  /* height: 40px; */
+}
+.boxes .rows {
+  align-items: center;
+  height: 70px;
+  border: 1px solid grey;
+  border-style: ridge;
+  border-radius: 10px;
+}
+
+/* .boxes tr:nth-child(even) {
+  background-color: black;
+} */
+
+.boxes .rows:hover {
+  background-color: #716f81;
+}
+
+.boxes th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: black;
+  color: white;
+}
+
 .filter-section {
   margin-top: 20px;
 }
