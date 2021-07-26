@@ -8,15 +8,7 @@ export default {
       album: "Blue",
       image: "https://i.scdn.co/image/ab67616d000048515b6bcc59c3562a6f362344c6",
     },
-    {
-      title: "Stay (feat. Maty Noyes)",
-      artist: "Kygo",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/a4efa1b584efd2077c680cc92b62553fdeee976d?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 239465,
-      album: "Cloud Nine",
-      image: "https://i.scdn.co/image/ab67616d0000485135590cb9280d5a1f5221ae1a",
-    },
+
     {
       title: "Closer",
       artist: "The Chainsmokers",
@@ -79,32 +71,7 @@ export default {
       album: "Memories...Do Not Open",
       image: "https://i.scdn.co/image/ab67616d000048510c13d3d5a503c84fcc60ae94",
     },
-    {
-      title: "Shape of You",
-      artist: "Ed Sheeran",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/84462d8e1e4d0f9e5ccd06f0da390f65843774a2?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 233712,
-      album: "÷ (Deluxe)",
-      image: "https://i.scdn.co/image/ab67616d00004851ba5db46f4b838ef6027e6f96",
-    },
-    {
-      title: "Something Just Like This",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/cb1ae1f9e2f874dd2d19e4c29edb552777eb1e7a?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 247160,
-      album: "Memories...Do Not Open",
-      image: "https://i.scdn.co/image/ab67616d000048510c13d3d5a503c84fcc60ae94",
-    },
-    {
-      title: "Mama",
-      artist: "Jonas Blue",
-      preview_url: null,
-      duration: 184133,
-      album: "Blue",
-      image: "https://i.scdn.co/image/ab67616d000048515b6bcc59c3562a6f362344c6",
-    },
+
     {
       title: "First Time",
       artist: "Kygo",
@@ -191,23 +158,7 @@ export default {
       album: "Evolve",
       image: "https://i.scdn.co/image/ab67616d000048515675e83f707f1d7271e5cf8a",
     },
-    {
-      title: "That's What I Like",
-      artist: "Bruno Mars",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/f09116ce18bd77f543e68a925e5a96509e79ac6a?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 206693,
-      album: "24K Magic",
-      image: "https://i.scdn.co/image/ab67616d00004851232711f7d66a1e19e89e28c5",
-    },
-    {
-      title: "Strip That Down (feat. Quavo)",
-      artist: "Liam Payne",
-      preview_url: null,
-      duration: 202061,
-      album: "LP1",
-      image: "https://i.scdn.co/image/ab67616d00004851373a46efca570f83dd78313f",
-    },
+
     {
       title: "This Is What You Came For (feat. Rihanna)",
       artist: "Calvin Harris",
@@ -234,23 +185,7 @@ export default {
       album: "This Is Acting",
       image: "https://i.scdn.co/image/ab67616d00004851fc36b265066a58e205ecbd5c",
     },
-    {
-      title: "Swalla (feat. Nicki Minaj & Ty Dolla $ign)",
-      artist: "Jason Derulo",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/9aa4e0500aae8b33d04f031c454688890ab06468?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 216408,
-      album: "Swalla (feat. Nicki Minaj & Ty Dolla $ign)",
-      image: "https://i.scdn.co/image/ab67616d000048519d6522bee68370fa5592301d",
-    },
-    {
-      title: "Now Or Never",
-      artist: "Halsey",
-      preview_url: null,
-      duration: 214801,
-      album: "hopeless fountain kingdom (Deluxe)",
-      image: "https://i.scdn.co/image/ab67616d000048510f7ad6d8d829906c17cae210",
-    },
+
     {
       title: "Stargazing",
       artist: "Kygo",
@@ -268,57 +203,7 @@ export default {
       album: "Wolves",
       image: "https://i.scdn.co/image/ab67616d00004851307910d4242c0d6b1fedf955",
     },
-    {
-      title: "New Rules",
-      artist: "Dua Lipa",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/75a1b521de23958a2db9acf4fc8151999ee54bd7?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 209320,
-      album: "Dua Lipa (Complete Edition)",
-      image: "https://i.scdn.co/image/ab67616d000048514251686a69b5bf55599ec280",
-    },
-    {
-      title: "All Falls Down (feat. Juliander)",
-      artist: "Alan Walker",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/6b54cfc5af27d0e9a882adbab22f1f1df71cc78f?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 198880,
-      album: "Different World",
-      image: "https://i.scdn.co/image/ab67616d00004851a108e07c661f9fc54de9c43a",
-    },
-    {
-      title: "Firestone",
-      artist: "Kygo",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/f91af8bcd21a11a1bf84d78d50db4a3ffafbb4a9?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 271640,
-      album: "Cloud Nine",
-      image: "https://i.scdn.co/image/ab67616d0000485135590cb9280d5a1f5221ae1a",
-    },
-    {
-      title: "Let Me Go (with Alesso, Florida Georgia Line & watt)",
-      artist: "Hailee Steinfeld",
-      preview_url: null,
-      duration: 174800,
-      album: "Let Me Go (with Alesso, Florida Georgia Line & watt)",
-      image: "https://i.scdn.co/image/ab67616d00004851523eb48df1fa22b6d450833e",
-    },
-    {
-      title: "New",
-      artist: "Daya",
-      preview_url: null,
-      duration: 230879,
-      album: "New",
-      image: "https://i.scdn.co/image/ab67616d0000485146f6975761d26f4c43f9b176",
-    },
-    {
-      title: "Slow Hands",
-      artist: "Niall Horan",
-      preview_url: null,
-      duration: 188174,
-      album: "Flicker (Deluxe)",
-      image: "https://i.scdn.co/image/ab67616d000048515bac234d5511248b248caf36",
-    },
+
     {
       title: "Beautiful Now",
       artist: "Zedd",
@@ -336,15 +221,7 @@ export default {
       album: "Different World",
       image: "https://i.scdn.co/image/ab67616d00004851a108e07c661f9fc54de9c43a",
     },
-    {
-      title: "There for You",
-      artist: "Martin Garrix",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/090c4307f87985a4fd16f87ed10660b86207dfd2?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 221904,
-      album: "There for You",
-      image: "https://i.scdn.co/image/ab67616d0000485172c57da7edfe8e915182cdd4",
-    },
+
     {
       title: "Into You",
       artist: "Ariana Grande",
@@ -386,15 +263,7 @@ export default {
       album: "How Deep Is Your Love",
       image: "https://i.scdn.co/image/ab67616d00004851f4956c3ceefc6fa1cffc6da6",
     },
-    {
-      title: "Feel So Close - Radio Edit",
-      artist: "Calvin Harris",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/1bb301a77b9116d35a5dfba254d7756482f565dc?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 206413,
-      album: "18 Months",
-      image: "https://i.scdn.co/image/ab67616d00004851dcef905cb144d4867119850b",
-    },
+
     {
       title: "On & On",
       artist: "Cartoon",
@@ -421,248 +290,7 @@ export default {
       album: "Gravity",
       image: "https://i.scdn.co/image/ab67616d000048510e5311993a01fb2e7169f6a7",
     },
-    {
-      title: "Who Do You Love",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/fd81239ead953f58f53a9604f3a44f50afad8918?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 226733,
-      album: "World War Joy",
-      image: "https://i.scdn.co/image/ab67616d000048515e90ff76fd49a23f7333de76",
-    },
-    {
-      title: "Beach House",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/01ff42ee1cc560eae761555da6ad3e7650205174?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 206120,
-      album: "Sick Boy",
-      image: "https://i.scdn.co/image/ab67616d000048518e26bf4293c9da7a6439607b",
-    },
-    {
-      title: "Bloodstream",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/84fb88b30831f89f33fe458219a036db149679a5?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 224280,
-      album: "Memories...Do Not Open",
-      image: "https://i.scdn.co/image/ab67616d000048510c13d3d5a503c84fcc60ae94",
-    },
-    {
-      title: "Break Up Every Night",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/119d2078bf60742215150fde0c1ecd7237ef9bce?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 207520,
-      album: "Memories...Do Not Open",
-      image: "https://i.scdn.co/image/ab67616d000048510c13d3d5a503c84fcc60ae94",
-    },
-    {
-      title: "Do You Mean",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/bd6348f45c00688038343b744c179cb082bf5316?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 193186,
-      album: "World War Joy",
-      image: "https://i.scdn.co/image/ab67616d000048515e90ff76fd49a23f7333de76",
-    },
-    {
-      title: "Don't Let Me Down (feat. Daya) - Illenium Remix",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/c7721aa9e1a24f63604e4f3fce3acb074bff2049?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 218933,
-      album: "Don't Let Me Down (Remixes) (feat. Daya)",
-      image: "https://i.scdn.co/image/ab67616d0000485117e91c66eac95d844e8595da",
-    },
-    {
-      title: "Don't Say",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/3487c521077bb9097a82f9b0b03c24c3d56208ce?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 228480,
-      album: "Memories...Do Not Open",
-      image: "https://i.scdn.co/image/ab67616d000048510c13d3d5a503c84fcc60ae94",
-    },
-    {
-      title: "Honest",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/d6c79611acbbc230a95d54689dc932d216c1e294?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 208000,
-      album: "Memories...Do Not Open",
-      image: "https://i.scdn.co/image/ab67616d000048510c13d3d5a503c84fcc60ae94",
-    },
-    {
-      title: "Hope",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/746135186e339c276d9f00f310286ce210782347?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 180120,
-      album: "Sick Boy",
-      image: "https://i.scdn.co/image/ab67616d000048518e26bf4293c9da7a6439607b",
-    },
-    {
-      title: "Takeaway",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/0017ff421bc67594b7a00740df16c58e3e2e0664?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 209880,
-      album: "World War Joy",
-      image: "https://i.scdn.co/image/ab67616d000048515e90ff76fd49a23f7333de76",
-    },
-    {
-      title: "Inside Out",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/e0bd2955b42fddc7fd9866395c39d8613dd4e083?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 233773,
-      album: "Inside Out",
-      image: "https://i.scdn.co/image/ab67616d000048510c7ca616433b7f0188305c2f",
-    },
-    {
-      title: "It Won't Kill Ya",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/ae87698a20998312d341f1e7d5ab8b3f073ba8d6?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 217613,
-      album: "Memories...Do Not Open",
-      image: "https://i.scdn.co/image/ab67616d000048510c13d3d5a503c84fcc60ae94",
-    },
-    {
-      title: "Siren",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/cedecc4f42c4e4551767a87a9d40d689c442ef75?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 174306,
-      album: "Sick Boy",
-      image: "https://i.scdn.co/image/ab67616d000048518e26bf4293c9da7a6439607b",
-    },
-    {
-      title: "Kills You Slowly",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/fec59cc634ffb0f37746b0203c859d795f20f815?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 213320,
-      album: "World War Joy",
-      image: "https://i.scdn.co/image/ab67616d000048515e90ff76fd49a23f7333de76",
-    },
-    {
-      title: "Last Day Alive",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/edfb3c100dbc0730cc90328e2d9095384abdf489?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 214306,
-      album: "Memories...Do Not Open",
-      image: "https://i.scdn.co/image/ab67616d000048510c13d3d5a503c84fcc60ae94",
-    },
-    {
-      title: "Let You Go - Radio Edit",
-      artist: "The Chainsmokers",
-      preview_url: null,
-      duration: 218973,
-      album: "Let You Go (Radio Edit)",
-      image: "https://i.scdn.co/image/ab67616d00004851d86b5d4e29bec1ad568eebe9",
-    },
-    {
-      title: "Save Yourself",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/6e9c1692795d1d5f5180b3294399f9299c749b0c?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 210453,
-      album: "Sick Boy",
-      image: "https://i.scdn.co/image/ab67616d000048518e26bf4293c9da7a6439607b",
-    },
-    {
-      title: "P.S. I Hope You're Happy",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/1124103baac4a76f6dce5512bee3d64aa284279e?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 225360,
-      album: "World War Joy",
-      image: "https://i.scdn.co/image/ab67616d000048515e90ff76fd49a23f7333de76",
-    },
-    {
-      title: "Push My Luck",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/7c4f64ff022b7ce16fcd1145c17f16ff297a4e71?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 181853,
-      album: "World War Joy",
-      image: "https://i.scdn.co/image/ab67616d000048515e90ff76fd49a23f7333de76",
-    },
-    {
-      title: "Roses",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/551ca104a8e572832a6873d5d6b205c430e291fd?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 226738,
-      album: "Roses",
-      image: "https://i.scdn.co/image/ab67616d000048518d2cfad007b9431f48aef135",
-    },
-    {
-      title: "See The Way",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/e9527c42a4b7feacd263c392e1185c13188ca4d9?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 177960,
-      album: "World War Joy",
-      image: "https://i.scdn.co/image/ab67616d000048515e90ff76fd49a23f7333de76",
-    },
-    {
-      title: "Setting Fires",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/a5d67555bb290a4c093d3bee8ddbb69cfcb85361?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 247426,
-      album: "Collage EP",
-      image: "https://i.scdn.co/image/ab67616d000048517c3b8acbb943c8da17364f34",
-    },
-    {
-      title: "The Reaper",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/346b407c769c335b343a78eb0c7f585e0da3ab84?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 182933,
-      album: "World War Joy",
-      image: "https://i.scdn.co/image/ab67616d000048515e90ff76fd49a23f7333de76",
-    },
-    {
-      title: "This Feeling",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/c30eb8833d9d5e9bb377a0521fffc02b80388cf1?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 197946,
-      album: "Sick Boy",
-      image: "https://i.scdn.co/image/ab67616d000048518e26bf4293c9da7a6439607b",
-    },
-    {
-      title: "Until You Were Gone (feat. Emily Warren)",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/197bfc5bc3dc080bc16bb432717d0701d80bf107?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 217040,
-      album: "Bouquet",
-      image: "https://i.scdn.co/image/ab67616d0000485142dc3783e8e2de8b4643c598",
-    },
-    {
-      title: "Family",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/e52887df6121ab2fe8aa2e7f041ec8c820efc0a3?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 194826,
-      album: "World War Joy",
-      image: "https://i.scdn.co/image/ab67616d000048515e90ff76fd49a23f7333de76",
-    },
-    {
-      title: "Young",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/24f91824531f02e77a978bab9482ff93973b7d27?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 224773,
-      album: "Memories...Do Not Open",
-      image: "https://i.scdn.co/image/ab67616d000048510c13d3d5a503c84fcc60ae94",
-    },
+
     {
       title: "A Thousand Years",
       artist: "Christina Perri",
@@ -672,14 +300,7 @@ export default {
       album: "A Thousand Years",
       image: "https://i.scdn.co/image/ab67616d000048513dea4a2ccd58ad1f8e4dbb03",
     },
-    {
-      title: "Clarity",
-      artist: "Zedd",
-      preview_url: null,
-      duration: 271426,
-      album: "Clarity",
-      image: "https://i.scdn.co/image/ab67616d00004851941dd3b3343d9cb9329d37bf",
-    },
+
     {
       title: "Rockabye (feat. Sean Paul & Anne-Marie)",
       artist: "Clean Bandit",
@@ -731,144 +352,6 @@ export default {
       duration: 267866,
       album: "Ghost Stories",
       image: "https://i.scdn.co/image/ab67616d00004851f864bcdcc245f06831d17ae0",
-    },
-    {
-      title: "Stitches",
-      artist: "Shawn Mendes",
-      preview_url: null,
-      duration: 206880,
-      album: "Handwritten",
-      image: "https://i.scdn.co/image/ab67616d0000485175bd5306fb4669a15ee74eff",
-    },
-    {
-      title: "Love The Way You Lie (Part II) - Pt. 2",
-      artist: "Rihanna",
-      preview_url: null,
-      duration: 296226,
-      album: "Loud",
-      image: "https://i.scdn.co/image/ab67616d000048512ed326786e4c61c6b1dbf222",
-    },
-    {
-      title: "Road",
-      artist: "Lane 8",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/157a179396602a5b6e4d2c741ddd6ce21b357baa?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 238032,
-      album: "Brightest Lights",
-      image: "https://i.scdn.co/image/ab67616d000048518e62ab7239cd10dfc2404d2f",
-    },
-    {
-      title: "Stranger Things (feat. OneRepublic)",
-      artist: "Kygo",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/18dbfa403825652a23deb32124ed2e50c881b41f?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 221440,
-      album: "Kids in Love",
-      image: "https://i.scdn.co/image/ab67616d00004851238d888f4282893ed8f83f2a",
-    },
-    {
-      title: "In the Name of Love",
-      artist: "Martin Garrix",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/cbd166d86a2d5a52930dd5fe509c1f2806aeab11?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 195706,
-      album: "In the Name of Love",
-      image: "https://i.scdn.co/image/ab67616d000048518c77bcf5f5a227d270d23370",
-    },
-    {
-      title: "Say My Name",
-      artist: "David Guetta",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/89e0ed2f21273e777832d67de4851c8137ee5c8d?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 198946,
-      album: "7",
-      image: "https://i.scdn.co/image/ab67616d0000485167e400c9be79e6b0b0086880",
-    },
-    {
-      title: "Taki Taki (feat. Selena Gomez, Ozuna & Cardi B)",
-      artist: "DJ Snake",
-      preview_url: null,
-      duration: 212500,
-      album: "Carte Blanche",
-      image: "https://i.scdn.co/image/ab67616d00004851caf82abb2338880577e472be",
-    },
-    {
-      title: "Solo (feat. Demi Lovato) - Latin Remix",
-      artist: "Clean Bandit",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/a529b339337adeda11297208f3df0f4c50f3db9a?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 222666,
-      album: "Solo (feat. Demi Lovato) [Latin Remix]",
-      image: "https://i.scdn.co/image/ab67616d000048519c44ffc326058a547c529ef3",
-    },
-    {
-      title: "Complicated (feat. Kiiara)",
-      artist: "Dimitri Vegas & Like Mike",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/f216a144f520dc58355afb4a43239d0bef381d55?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 184247,
-      album: "Complicated (feat. Kiiara)",
-      image: "https://i.scdn.co/image/ab67616d0000485105df880db084244f431803b4",
-    },
-    {
-      title: "Gold Skies",
-      artist: "Martin Garrix",
-      preview_url: null,
-      duration: 239973,
-      album: "The Workout Mix - Beach Fit",
-      image: "https://i.scdn.co/image/ab67616d0000485163dddd037341fe1d2cb729e1",
-    },
-    {
-      title: "Used To Love (with Dean Lewis)",
-      artist: "Martin Garrix",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/f6152f38f4347dd9c05ec70b8acf6b61f3b4b325?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 236764,
-      album: "Used To Love (with Dean Lewis)",
-      image: "https://i.scdn.co/image/ab67616d00004851dcc28379ce36e6fbf9a311a0",
-    },
-    {
-      title: "High On Life (feat. Bonn)",
-      artist: "Martin Garrix",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/818503ffe3cd132ec5729384ce3f0efddcade342?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 230761,
-      album: "High On Life (feat. Bonn)",
-      image: "https://i.scdn.co/image/ab67616d00004851def05abd2a12cd19243e2b6d",
-    },
-    {
-      title: "Waiting For Love",
-      artist: "Avicii",
-      preview_url: null,
-      duration: 230613,
-      album: "Stories",
-      image: "https://i.scdn.co/image/ab67616d000048515393c5d3cac806092a9bc468",
-    },
-    {
-      title: "Better When You're Gone",
-      artist: "David Guetta",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/b1b16a47f2f1a448c9d349d3d166718ee0daa7ca?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 192402,
-      album: "Better When You're Gone",
-      image: "https://i.scdn.co/image/ab67616d000048513b9662b667e21cbbaf8565bd",
-    },
-    {
-      title: "Like I Do",
-      artist: "David Guetta",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/6c6d08d072afd9e943988190a29a484055376fd0?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 202500,
-      album: "Like I Do",
-      image: "https://i.scdn.co/image/ab67616d00004851734eb0ed1bd80aeed903f30b",
-    },
-    {
-      title: "Levels - Original Version",
-      artist: "Avicii",
-      preview_url: null,
-      duration: 338866,
-      album: "Levels",
-      image: "https://i.scdn.co/image/ab67616d00004851ffb343926530168be4724dd4",
     },
   ],
 };
