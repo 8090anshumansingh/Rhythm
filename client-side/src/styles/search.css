@@ -53,7 +53,11 @@ body {
   flex: 3;
   /* margin-right: 20px; */
   /* margin-right: 20px; */
+  width: 100%;
+  height: 500px;
   background-color: black;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .boxes {
@@ -90,6 +94,10 @@ body {
   text-align: left;
   background-color: black;
   color: white;
+}
+
+.playing-box {
+  background-color: #716f81;
 }
 
 .filter-section {

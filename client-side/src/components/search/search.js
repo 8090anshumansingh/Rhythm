@@ -532,7 +532,7 @@ function Search() {
                 </th>
               </tr>
               {songs.map((s, i) => (
-                <tr className="rows">
+                <tr className={"rows " + (s.isPlaying && "playing-box")}>
                   <td>{i + 1}</td>
                   {!s.isPlaying ? (
                     <td>
