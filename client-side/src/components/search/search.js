@@ -8,6 +8,7 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PauseIcon from "@material-ui/icons/Pause";
+import LowerBar from "../lowerBar/LowerBar.js";
 function Search() {
   const [songs, setSongs] = useState([]);
   const [allSongs, setAllSongs] = useState([]);
@@ -403,6 +404,8 @@ function Search() {
   // });
   // setSongs(newTracks);
 
+  const [sendTrack, setSendTrack] = useState();
+
   const playAudio = (index) => {
     if (songs[index].isPlaying === true) {
       // console.log("pause now");
@@ -567,6 +570,9 @@ function Search() {
               ))}
             </table>
           </div>
+        </div>
+        <div className="section3">
+          <LowerBar />
         </div>
       </div>
     </React.Fragment>
