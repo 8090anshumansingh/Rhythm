@@ -85,7 +85,7 @@ body {
 } */
 
 .boxes .rows:hover {
-  background-color: #716f81;
+  background-color: #161616;
 }
 
 .boxes th {
@@ -97,7 +97,7 @@ body {
 }
 
 .playing-box {
-  background-color: #716f81;
+  background-color: #161616;
 }
 
 .filter-section {

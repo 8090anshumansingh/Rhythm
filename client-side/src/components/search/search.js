@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "../../axios.js";
 import "../../styles/search.css";
 import SearchIcon from "@material-ui/icons/Search";
@@ -9,10 +9,14 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PauseIcon from "@material-ui/icons/Pause";
 import LowerBar from "../lowerBar/LowerBar.js";
+
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 function Search() {
   const [songs, setSongs] = useState([]);
   const [allSongs, setAllSongs] = useState([]);
   const [isPlaying, setIsPlaying] = useState([false]);
+  const myRef = useRef(null);
+  const executeScroll = () => scrollToRef(myRef);
 
   useEffect(() => {
     const fetchSongs = async () => {
@@ -27,7 +31,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -54,7 +58,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -81,7 +85,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -108,7 +112,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -135,7 +139,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -162,7 +166,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -189,7 +193,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -216,7 +220,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -243,7 +247,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -270,7 +274,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -297,7 +301,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -324,7 +328,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -351,7 +355,7 @@ function Search() {
             album: t.album,
             duration: t.duration,
             image: t.image,
-            audio: new Audio(t.preview_url),
+            audio: t.preview_url,
             isPlaying: false,
           };
           if (t.preview_url !== null) newTracks.push(newT);
@@ -404,39 +408,64 @@ function Search() {
   // });
   // setSongs(newTracks);
 
-  const [sendTrack, setSendTrack] = useState();
+  const [sendTrack, setSendTrack] = useState(null);
 
   const playAudio = (index) => {
+    executeScroll();
     if (songs[index].isPlaying === true) {
-      // console.log("pause now");
-      songs[index].audio.pause();
+      // songs[index].audio.pause();
     } else {
-      var stopIndex = -1;
-      songs.forEach((s, i) => {
-        if (s.isPlaying === true && i !== index) {
-          stopIndex = i;
-          return;
-        }
-      });
+      setSendTrack(songs[index]);
 
-      setSongs((prev) => {
-        return prev.map((p, i) =>
-          i !== index && p.isPlaying === true
-            ? { ...p, isPlaying: !p.isPlaying }
-            : p
-        );
-      });
+      // var stopIndex = -1;
+      // songs.forEach((s, i) => {
+      //   if (s.isPlaying === true && i !== index) {
+      //     stopIndex = i;
+      //     return;
+      //   }
+      // });
+      //
+      // setSongs((prev) => {
+      //   return prev.map((p, i) =>
+      //     i !== index && p.isPlaying === true
+      //       ? { ...p, isPlaying: !p.isPlaying }
+      //       : p
+      //   );
+      // });
 
-      if (stopIndex !== -1) {
-        songs[stopIndex].audio.pause();
-      }
+      // if (stopIndex !== -1) {
+      //   // songs[stopIndex].audio.pause();
+      // }
 
-      songs[index].audio.play();
+      // songs[index].audio.play();
     }
 
+    // setSongs((prev) => {
+    //   return prev.map((p, i) =>
+    //     i === index ? { ...p, isPlaying: !p.isPlaying } : p
+    //   );
+    // });
+  };
+
+  const playingHandler = (title1) => {
     setSongs((prev) => {
       return prev.map((p, i) =>
-        i === index ? { ...p, isPlaying: !p.isPlaying } : p
+        p.title !== title1 && p.isPlaying === true
+          ? { ...p, isPlaying: false }
+          : p
+      );
+    });
+
+    setSongs((prev) => {
+      return prev.map((p) =>
+        p.title === title1 ? { ...p, isPlaying: true } : p
+      );
+    });
+  };
+  const pausingHandler = (title1) => {
+    setSongs((prev) => {
+      return prev.map((p) =>
+        p.title === title1 ? { ...p, isPlaying: false } : p
       );
     });
   };
@@ -548,20 +577,23 @@ function Search() {
                     </td>
                   ) : (
                     <td>
-                      <PauseIcon
-                        onClick={() => {
-                          playAudio(i);
-                        }}
-                        style={{ color: "white" }}
+                      <img
+                        src="https://open.scdn.co/cdn/images/equaliser-animated-green.73b73928.gif"
+                        style={{ backgroundColor: "#161616" }}
                       />
                     </td>
                   )}
                   <td>
                     <img src={s.image} width="50" height="40" />
-                    {s.title}
+                    {s.title.substr(0, 30) + (s.title.length > 30 ? "..." : "")}
                   </td>
-                  <td>{s.artist}</td>
-                  <td>{s.album}</td>
+                  <td>
+                    {s.artist.substr(0, 30) +
+                      (s.artist.length > 30 ? "..." : "")}
+                  </td>
+                  <td>
+                    {s.album.substr(0, 30) + (s.album.length > 30 ? "..." : "")}
+                  </td>
                   <td>
                     <FavoriteBorderIcon style={{ color: "white" }} />
                   </td>
@@ -571,8 +603,20 @@ function Search() {
             </table>
           </div>
         </div>
-        <div className="section3">
-          <LowerBar />
+        <div ref={myRef}>
+          {sendTrack !== null && (
+            <div className="section3">
+              <LowerBar
+                key={sendTrack.title}
+                title={sendTrack.title}
+                artist={sendTrack.artist}
+                image={sendTrack.image}
+                audio={sendTrack.audio}
+                onPlaying={playingHandler}
+                onPausing={pausingHandler}
+              />
+            </div>
+          )}
         </div>
       </div>
     </React.Fragment>
@@ -580,3 +624,10 @@ function Search() {
 }
 
 export default Search;
+
+// <PauseIcon
+//   onClick={() => {
+//     playAudio(i);
+//   }}
+//   style={{ color: "white" }}
+// />
