@@ -18,6 +18,56 @@ function Search() {
   const myRef = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
 
+  const [artistOptions, setArtistOptions] = useState([
+    {
+      name: "Ed Sheeran",
+      tick: false,
+    },
+    {
+      name: "Lord Huron",
+      tick: false,
+    },
+    {
+      name: "Linkin Park",
+      tick: false,
+    },
+    {
+      name: "Green Day",
+      tick: false,
+    },
+    {
+      name: "Darshan Raval",
+      tick: false,
+    },
+    {
+      name: "The Chainsmokers",
+      tick: false,
+    },
+    {
+      name: "Coldplay",
+      tick: false,
+    },
+    {
+      name: "Charlie Puth",
+      tick: false,
+    },
+    {
+      name: "Arijit Singh",
+      tick: false,
+    },
+    {
+      name: "Bruno Mars",
+      tick: false,
+    },
+    {
+      name: "Alan Walker",
+      tick: false,
+    },
+  ]);
+  const [filter, setFilter] = useState({
+    artists: [],
+  });
+
   useEffect(() => {
     const fetchSongs = async () => {
       try {
@@ -38,6 +88,10 @@ function Search() {
         });
         newTracks.forEach((n) => {
           setSongs((prev) => {
+            return [...prev, n];
+          });
+
+          setAllSongs((prev) => {
             return [...prev, n];
           });
         });
@@ -68,6 +122,10 @@ function Search() {
           setSongs((prev) => {
             return [...prev, n];
           });
+
+          setAllSongs((prev) => {
+            return [...prev, n];
+          });
         });
       } catch (e) {
         console.log(e);
@@ -93,6 +151,10 @@ function Search() {
 
         newTracks.forEach((n) => {
           setSongs((prev) => {
+            return [...prev, n];
+          });
+
+          setAllSongs((prev) => {
             return [...prev, n];
           });
         });
@@ -122,6 +184,10 @@ function Search() {
           setSongs((prev) => {
             return [...prev, n];
           });
+
+          setAllSongs((prev) => {
+            return [...prev, n];
+          });
         });
       } catch (e) {
         console.log(e);
@@ -147,6 +213,10 @@ function Search() {
 
         newTracks.forEach((n) => {
           setSongs((prev) => {
+            return [...prev, n];
+          });
+
+          setAllSongs((prev) => {
             return [...prev, n];
           });
         });
@@ -176,6 +246,10 @@ function Search() {
           setSongs((prev) => {
             return [...prev, n];
           });
+
+          setAllSongs((prev) => {
+            return [...prev, n];
+          });
         });
       } catch (e) {
         console.log(e);
@@ -201,6 +275,10 @@ function Search() {
 
         newTracks.forEach((n) => {
           setSongs((prev) => {
+            return [...prev, n];
+          });
+
+          setAllSongs((prev) => {
             return [...prev, n];
           });
         });
@@ -230,6 +308,10 @@ function Search() {
           setSongs((prev) => {
             return [...prev, n];
           });
+
+          setAllSongs((prev) => {
+            return [...prev, n];
+          });
         });
       } catch (e) {
         console.log(e);
@@ -255,6 +337,10 @@ function Search() {
 
         newTracks.forEach((n) => {
           setSongs((prev) => {
+            return [...prev, n];
+          });
+
+          setAllSongs((prev) => {
             return [...prev, n];
           });
         });
@@ -284,6 +370,10 @@ function Search() {
           setSongs((prev) => {
             return [...prev, n];
           });
+
+          setAllSongs((prev) => {
+            return [...prev, n];
+          });
         });
       } catch (e) {
         console.log(e);
@@ -309,6 +399,10 @@ function Search() {
 
         newTracks.forEach((n) => {
           setSongs((prev) => {
+            return [...prev, n];
+          });
+
+          setAllSongs((prev) => {
             return [...prev, n];
           });
         });
@@ -338,6 +432,10 @@ function Search() {
           setSongs((prev) => {
             return [...prev, n];
           });
+
+          setAllSongs((prev) => {
+            return [...prev, n];
+          });
         });
       } catch (e) {
         console.log(e);
@@ -363,6 +461,10 @@ function Search() {
 
         newTracks.forEach((n) => {
           setSongs((prev) => {
+            return [...prev, n];
+          });
+
+          setAllSongs((prev) => {
             return [...prev, n];
           });
         });
@@ -476,6 +578,47 @@ function Search() {
     return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   }
 
+  const artistChangeHandler = (event) => {
+    const value = event.target.value;
+    const curr = filter.artists;
+    if (event.target.checked === true) {
+      setArtistOptions((prevState) => {
+        return prevState.map((li) =>
+          li.name === value ? { ...li, tick: true } : li
+        );
+      });
+      curr.push(value);
+      setFilter((prev) => {
+        prev.artists = curr;
+        return prev;
+      });
+    } else {
+      setArtistOptions((prevState) => {
+        return prevState.map((li) =>
+          li.name === value ? { ...li, tick: false } : li
+        );
+      });
+
+      const ind = curr.indexOf(value);
+      curr.splice(ind, 1);
+      setFilter((prev) => {
+        prev.artists = curr;
+        return prev;
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (filter.artists.length === 0) {
+      setSongs(allSongs);
+    } else {
+      var currentSongs = allSongs.filter((s) =>
+        filter.artists.includes(s.artist)
+      );
+      setSongs(currentSongs);
+    }
+  }, [filter, artistOptions]);
+
   return (
     <React.Fragment>
       <Navbar />
@@ -523,30 +666,19 @@ function Search() {
             </div>
             <div className="filter-section">
               <h5>Artists</h5>
-              <div className="artistBox">
-                <input type="checkbox" id="loc" />
-                <label htmlFor="loc" className="para">
-                  Ed sheeran
-                </label>
-              </div>
-              <div className="artistBox">
-                <input type="checkbox" id="loc" />
-                <label htmlFor="loc" className="para">
-                  U2
-                </label>
-              </div>
-              <div className="artistBox">
-                <input type="checkbox" id="loc" />
-                <label htmlFor="loc" className="para">
-                  Linkin Park
-                </label>
-              </div>
-              <div className="artistBox">
-                <input type="checkbox" id="loc" />
-                <label htmlFor="loc" className="para">
-                  Green Day
-                </label>
-              </div>
+              {artistOptions.map((a) => (
+                <div className="artistBox">
+                  <input
+                    type="checkbox"
+                    onChange={artistChangeHandler}
+                    value={a.name}
+                    checked={a.tick}
+                  />
+                  <label htmlFor="loc" className="para">
+                    {a.name}
+                  </label>
+                </div>
+              ))}
             </div>
           </div>
 
