@@ -10,6 +10,9 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PauseIcon from "@material-ui/icons/Pause";
 import LowerBar from "../lowerBar/LowerBar.js";
 import Bar from "./Bar.js";
+import * as ReactBootStrap from "react-bootstrap";
+
+// var temp = [...new Set(clients)];
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 function Search() {
@@ -18,6 +21,8 @@ function Search() {
   const [isPlaying, setIsPlaying] = useState([false]);
   const myRef = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
+
+  const [loading, setLoading] = useState(false);
 
   const [artistOptions, setArtistOptions] = useState([
     {
@@ -87,6 +92,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -96,6 +102,8 @@ function Search() {
             return [...prev, n];
           });
         });
+
+        // setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -118,7 +126,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -128,6 +136,7 @@ function Search() {
             return [...prev, n];
           });
         });
+        setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -149,7 +158,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -159,6 +168,7 @@ function Search() {
             return [...prev, n];
           });
         });
+        // setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -180,7 +190,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -190,6 +200,7 @@ function Search() {
             return [...prev, n];
           });
         });
+        // setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -211,7 +222,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -221,6 +232,7 @@ function Search() {
             return [...prev, n];
           });
         });
+        // setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -242,7 +254,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -252,6 +264,7 @@ function Search() {
             return [...prev, n];
           });
         });
+        // setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -273,7 +286,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -283,6 +296,7 @@ function Search() {
             return [...prev, n];
           });
         });
+        // setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -304,7 +318,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -314,6 +328,7 @@ function Search() {
             return [...prev, n];
           });
         });
+        // setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -335,7 +350,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -345,6 +360,7 @@ function Search() {
             return [...prev, n];
           });
         });
+        // setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -366,7 +382,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -376,6 +392,7 @@ function Search() {
             return [...prev, n];
           });
         });
+        // setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -397,7 +414,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -407,6 +424,7 @@ function Search() {
             return [...prev, n];
           });
         });
+        // setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -428,7 +446,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -438,6 +456,7 @@ function Search() {
             return [...prev, n];
           });
         });
+        // setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -459,7 +478,7 @@ function Search() {
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-
+        newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -469,6 +488,7 @@ function Search() {
             return [...prev, n];
           });
         });
+        // setLoading(true);
       } catch (e) {
         console.log(e);
       }
@@ -476,18 +496,18 @@ function Search() {
 
     fetchSongs();
     fetchSheeranSongs();
-    // fetchHimymSongs();
-    // fetchTwilightSongs();
-    // fetchDarshanSongs();
-    // fetchRecommendedSongs();
-    // fetchMix1Songs();
-    // fetchMix3Songs();
-    // fetchMix5Songs();
-    // fetchDecadeSongs();
-    // fetchYearSongs();
-    //
-    // fetchKKSongs();
-    // fetchHindiSongs();
+    fetchHimymSongs();
+    fetchTwilightSongs();
+    fetchDarshanSongs();
+    fetchRecommendedSongs();
+    fetchMix1Songs();
+    fetchMix3Songs();
+    fetchMix5Songs();
+    fetchDecadeSongs();
+    fetchYearSongs();
+
+    fetchKKSongs();
+    fetchHindiSongs();
   }, []);
 
   // const [audio, setAudio] = useState({
@@ -551,6 +571,7 @@ function Search() {
   };
 
   const playingHandler = (title1) => {
+    executeScroll();
     setSongs((prev) => {
       return prev.map((p, i) =>
         p.title !== title1 && p.isPlaying === true
@@ -731,43 +752,51 @@ function Search() {
                   <QueryBuilderIcon />
                 </th>
               </tr>
-              {songs.map((s, i) => (
-                <tr className={"rows " + (s.isPlaying && "playing-box")}>
-                  <td>{i + 1}</td>
-                  {!s.isPlaying ? (
+              {loading ? (
+                songs.map((s, i) => (
+                  <tr className={"rows " + (s.isPlaying && "playing-box")}>
+                    <td>{i + 1}</td>
+                    {!s.isPlaying ? (
+                      <td>
+                        <PlayArrowIcon
+                          onClick={() => {
+                            playAudio(i);
+                          }}
+                          style={{ color: "white" }}
+                        />
+                      </td>
+                    ) : (
+                      <td>
+                        <img
+                          src="https://open.scdn.co/cdn/images/equaliser-animated-green.73b73928.gif"
+                          style={{ backgroundColor: "#161616" }}
+                        />
+                      </td>
+                    )}
                     <td>
-                      <PlayArrowIcon
-                        onClick={() => {
-                          playAudio(i);
-                        }}
-                        style={{ color: "white" }}
-                      />
+                      <img src={s.image} width="50" height="40" />
+                      {s.title.substr(0, 30) +
+                        (s.title.length > 30 ? "..." : "")}
                     </td>
-                  ) : (
                     <td>
-                      <img
-                        src="https://open.scdn.co/cdn/images/equaliser-animated-green.73b73928.gif"
-                        style={{ backgroundColor: "#161616" }}
-                      />
+                      {s.artist.substr(0, 30) +
+                        (s.artist.length > 30 ? "..." : "")}
                     </td>
-                  )}
-                  <td>
-                    <img src={s.image} width="50" height="40" />
-                    {s.title.substr(0, 30) + (s.title.length > 30 ? "..." : "")}
-                  </td>
-                  <td>
-                    {s.artist.substr(0, 30) +
-                      (s.artist.length > 30 ? "..." : "")}
-                  </td>
-                  <td>
-                    {s.album.substr(0, 30) + (s.album.length > 30 ? "..." : "")}
-                  </td>
-                  <td>
-                    <FavoriteBorderIcon style={{ color: "white" }} />
-                  </td>
-                  <td>{millisToMinutesAndSeconds(s.duration)}</td>
-                </tr>
-              ))}
+                    <td>
+                      {s.album.substr(0, 30) +
+                        (s.album.length > 30 ? "..." : "")}
+                    </td>
+                    <td>
+                      <FavoriteBorderIcon style={{ color: "white" }} />
+                    </td>
+                    <td>{millisToMinutesAndSeconds(s.duration)}</td>
+                  </tr>
+                ))
+              ) : (
+                <div className="spinner">
+                  <ReactBootStrap.Spinner animation="border" variant="light" />
+                </div>
+              )}
             </table>
           </div>
         </div>

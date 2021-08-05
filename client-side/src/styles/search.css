@@ -20,6 +20,10 @@
   outline: none;
   flex: 1;
 }
+.spinner {
+  margin-left: 500px;
+  margin-top: 200px;
+}
 
 .section1 .search__box button {
   height: 100%;
