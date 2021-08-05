@@ -9,6 +9,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PauseIcon from "@material-ui/icons/Pause";
 import LowerBar from "../lowerBar/LowerBar.js";
+import Bar from "./Bar.js";
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 function Search() {
@@ -475,18 +476,18 @@ function Search() {
 
     fetchSongs();
     fetchSheeranSongs();
-    fetchHimymSongs();
-    fetchTwilightSongs();
-    fetchDarshanSongs();
-    fetchRecommendedSongs();
-    fetchMix1Songs();
-    fetchMix3Songs();
-    fetchMix5Songs();
-    fetchDecadeSongs();
-    fetchYearSongs();
-
-    fetchKKSongs();
-    fetchHindiSongs();
+    // fetchHimymSongs();
+    // fetchTwilightSongs();
+    // fetchDarshanSongs();
+    // fetchRecommendedSongs();
+    // fetchMix1Songs();
+    // fetchMix3Songs();
+    // fetchMix5Songs();
+    // fetchDecadeSongs();
+    // fetchYearSongs();
+    //
+    // fetchKKSongs();
+    // fetchHindiSongs();
   }, []);
 
   // const [audio, setAudio] = useState({
@@ -579,6 +580,7 @@ function Search() {
   }
 
   const artistChangeHandler = (event) => {
+    setSelected(null);
     const value = event.target.value;
     const curr = filter.artists;
     if (event.target.checked === true) {
@@ -607,8 +609,42 @@ function Search() {
       });
     }
   };
+  const [selected, setSelected] = useState(null);
+  // const resetFilters = () => {
+  //   setArtistOptions((prev) => {
+  //     return prev.map((li) => (li.tick === true ? { ...li, tick: false } : li));
+  //   });
+  //   setSongs(allSongs);
+  // };
+
+  const searchSelectHandler = (value) => {
+    // console.log(value);
+    setSelected(value);
+
+    // setSongs(allSongs);
+    // resetFilters();
+  };
+
+  const searchButtonHandler = () => {
+    var current = allSongs.filter((s) => s.title === selected);
+
+    setFilter((prev) => {
+      prev.artists = [];
+      return prev;
+    });
+
+    setArtistOptions((prev) => {
+      return prev.map((li) => (li.tick === true ? { ...li, tick: false } : li));
+    });
+
+    // console.log(current);
+    setSongs(current);
+  };
 
   useEffect(() => {
+    if (selected !== null) {
+      return;
+    }
     if (filter.artists.length === 0) {
       setSongs(allSongs);
     } else {
@@ -618,20 +654,20 @@ function Search() {
       setSongs(currentSongs);
     }
   }, [filter, artistOptions]);
-
+  // <input
+  //   type="text"
+  //   placeholder="Search for artists, songs or podcasts"
+  // />
   return (
     <React.Fragment>
       <Navbar />
+
       <div className="search">
         <div className="section1">
           <div className="search__box">
             <SearchIcon />
-            <input
-              type="text"
-              placeholder="Search for artists, songs or podcasts"
-            />
-
-            <button>Search</button>
+            <Bar songs={allSongs} onSelect={searchSelectHandler} />
+            <button onClick={searchButtonHandler}>Search</button>
           </div>
         </div>
 
