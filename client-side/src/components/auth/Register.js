@@ -46,6 +46,7 @@ function Register() {
   return (
     <React.Fragment>
       <Navbar />
+
       <div className="register">
         <div className="outer">
           <div className="inner">
