@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "../../axios.js";
 import "../../styles/search.css";
 import SearchIcon from "@material-ui/icons/Search";
-import Navbar from "../Navbars/Navbar.js";
+import SearchNavbar from "../Navbars/SearchNavbar.js";
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -11,8 +11,26 @@ import PauseIcon from "@material-ui/icons/Pause";
 import LowerBar from "../lowerBar/LowerBar.js";
 import Bar from "./Bar.js";
 import * as ReactBootStrap from "react-bootstrap";
+import { withStyles } from "@material-ui/core/styles";
+import { green } from "@material-ui/core/colors";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import TablePagination from "@material-ui/core/TablePagination";
 
 // var temp = [...new Set(clients)];
+
+const GreenCheckbox = withStyles({
+  root: {
+    color: green[400],
+    "&$checked": {
+      color: green[600],
+    },
+  },
+  checked: {},
+})((props) => <Checkbox color="default" {...props} />);
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 function Search() {
@@ -20,7 +38,9 @@ function Search() {
   const [allSongs, setAllSongs] = useState([]);
   const [isPlaying, setIsPlaying] = useState([false]);
   const myRef = useRef(null);
+  const songRef = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
+  const playScroll = () => scrollToRef(songRef);
 
   const [loading, setLoading] = useState(false);
 
@@ -67,6 +87,14 @@ function Search() {
     },
     {
       name: "Alan Walker",
+      tick: false,
+    },
+    {
+      name: "Band of Horses",
+      tick: false,
+    },
+    {
+      name: "Fort Atlantic",
       tick: false,
     },
   ]);
@@ -601,6 +629,7 @@ function Search() {
   }
 
   const artistChangeHandler = (event) => {
+    setPage(0);
     setSelected(null);
     const value = event.target.value;
     const curr = filter.artists;
@@ -647,6 +676,7 @@ function Search() {
   };
 
   const searchButtonHandler = () => {
+    setPage(0);
     var current = allSongs.filter((s) => s.title === selected);
 
     setFilter((prev) => {
@@ -675,17 +705,27 @@ function Search() {
       setSongs(currentSongs);
     }
   }, [filter, artistOptions]);
-  // <input
-  //   type="text"
-  //   placeholder="Search for artists, songs or podcasts"
-  // />
+
+  ///////////////////////////////////pagination //////////////////////////////
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+    playScroll();
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   return (
     <React.Fragment>
-      <Navbar />
+      <SearchNavbar />
 
       <div className="search">
         <div className="section1">
-          <div className="search__box">
+          <div className="search__box" ref={songRef}>
             <SearchIcon />
             <Bar songs={allSongs} onSelect={searchSelectHandler} />
             <button onClick={searchButtonHandler}>Search</button>
@@ -695,41 +735,13 @@ function Search() {
         <div className="section2">
           <div className="left">
             <div className="filter-section">
-              <h5>Genres</h5>
-              <div className="genreBox">
-                <input type="checkbox" id="loc" />
-                <label htmlFor="loc" className="para">
-                  Pop
-                </label>
-              </div>
-              <div className="genreBox">
-                <input type="checkbox" id="loc" />
-                <label htmlFor="loc" className="para">
-                  Rock
-                </label>
-              </div>
-              <div className="genreBox">
-                <input type="checkbox" id="loc" />
-                <label htmlFor="loc" className="para">
-                  BollyWood
-                </label>
-              </div>
-              <div className="genreBox">
-                <input type="checkbox" id="loc" />
-                <label htmlFor="loc" className="para">
-                  k-Pop
-                </label>
-              </div>
-            </div>
-            <div className="filter-section">
               <h5>Artists</h5>
               {artistOptions.map((a) => (
                 <div className="artistBox">
-                  <input
-                    type="checkbox"
+                  <GreenCheckbox
+                    checked={a.tick}
                     onChange={artistChangeHandler}
                     value={a.name}
-                    checked={a.tick}
                   />
                   <label htmlFor="loc" className="para">
                     {a.name}
@@ -753,51 +765,63 @@ function Search() {
                 </th>
               </tr>
               {loading ? (
-                songs.map((s, i) => (
-                  <tr className={"rows " + (s.isPlaying && "playing-box")}>
-                    <td>{i + 1}</td>
-                    {!s.isPlaying ? (
+                songs
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((s, i) => (
+                    <tr className={"rows " + (s.isPlaying && "playing-box")}>
+                      <td>{i + page * rowsPerPage + 1}</td>
+                      {!s.isPlaying ? (
+                        <td>
+                          <PlayArrowIcon
+                            onClick={() => {
+                              playAudio(i + page * rowsPerPage);
+                            }}
+                            style={{ color: "white" }}
+                          />
+                        </td>
+                      ) : (
+                        <td>
+                          <img
+                            src="https://open.scdn.co/cdn/images/equaliser-animated-green.73b73928.gif"
+                            style={{ backgroundColor: "#161616" }}
+                          />
+                        </td>
+                      )}
                       <td>
-                        <PlayArrowIcon
-                          onClick={() => {
-                            playAudio(i);
-                          }}
-                          style={{ color: "white" }}
-                        />
+                        <img src={s.image} width="50" height="40" />
+                        {s.title.substr(0, 30) +
+                          (s.title.length > 30 ? "..." : "")}
                       </td>
-                    ) : (
                       <td>
-                        <img
-                          src="https://open.scdn.co/cdn/images/equaliser-animated-green.73b73928.gif"
-                          style={{ backgroundColor: "#161616" }}
-                        />
+                        {s.artist.substr(0, 30) +
+                          (s.artist.length > 30 ? "..." : "")}
                       </td>
-                    )}
-                    <td>
-                      <img src={s.image} width="50" height="40" />
-                      {s.title.substr(0, 30) +
-                        (s.title.length > 30 ? "..." : "")}
-                    </td>
-                    <td>
-                      {s.artist.substr(0, 30) +
-                        (s.artist.length > 30 ? "..." : "")}
-                    </td>
-                    <td>
-                      {s.album.substr(0, 30) +
-                        (s.album.length > 30 ? "..." : "")}
-                    </td>
-                    <td>
-                      <FavoriteBorderIcon style={{ color: "white" }} />
-                    </td>
-                    <td>{millisToMinutesAndSeconds(s.duration)}</td>
-                  </tr>
-                ))
+                      <td>
+                        {s.album.substr(0, 30) +
+                          (s.album.length > 30 ? "..." : "")}
+                      </td>
+                      <td>
+                        <FavoriteBorderIcon style={{ color: "white" }} />
+                      </td>
+                      <td>{millisToMinutesAndSeconds(s.duration)}</td>
+                    </tr>
+                  ))
               ) : (
                 <div className="spinner">
                   <ReactBootStrap.Spinner animation="border" variant="light" />
                 </div>
               )}
             </table>
+            <div className="pagination-section">
+              <TablePagination
+                component="div"
+                count={songs.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+              />
+            </div>
           </div>
         </div>
         <div ref={myRef}>
@@ -828,3 +852,31 @@ export default Search;
 //   }}
 //   style={{ color: "white" }}
 // />
+
+// <div className="filter-section">
+//   <h5>Genres</h5>
+//   <div className="genreBox">
+//     <input type="checkbox" id="loc" />
+//     <label htmlFor="loc" className="para">
+//       Pop
+//     </label>
+//   </div>
+//   <div className="genreBox">
+//     <input type="checkbox" id="loc" />
+//     <label htmlFor="loc" className="para">
+//       Rock
+//     </label>
+//   </div>
+//   <div className="genreBox">
+//     <input type="checkbox" id="loc" />
+//     <label htmlFor="loc" className="para">
+//       BollyWood
+//     </label>
+//   </div>
+//   <div className="genreBox">
+//     <input type="checkbox" id="loc" />
+//     <label htmlFor="loc" className="para">
+//       k-Pop
+//     </label>
+//   </div>
+// </div>

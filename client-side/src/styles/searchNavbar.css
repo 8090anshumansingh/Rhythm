@@ -1,0 +1,31 @@
+.searchNavbar .navbar1 {
+  display: flex;
+  justify-content: space-between;
+}
+.searchNavbar .ulc {
+  position: absolute;
+
+  right: 50px;
+  /* margin-left: 100px; */
+}
+.searchNavbar li {
+  display: flex;
+  margin-left: 15px;
+  margin-right: 15px;
+  /* margin-left: 100px; */
+}
+.searchNavbar .navbar-icons {
+  color: #1db954;
+  margin-top: 6px;
+}
+
+.searchNavbar .navbar-light {
+  background-color: #161616;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+}
+
+.searchNavbar .navbar-heading {
+  color: white;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 50px;
+}
