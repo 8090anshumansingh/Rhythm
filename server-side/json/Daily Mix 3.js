@@ -196,15 +196,7 @@ export default {
       album: "The Joshua Tree (Super Deluxe)",
       image: "https://i.scdn.co/image/ab67616d00004851b7bea3d01f04e6d0408d2afe",
     },
-    {
-      title: "Something Just Like This",
-      artist: "The Chainsmokers",
-      preview_url:
-        "https://p.scdn.co/mp3-preview/cb1ae1f9e2f874dd2d19e4c29edb552777eb1e7a?cid=982ee71c94964e128eaca616a21e1a1d",
-      duration: 247160,
-      album: "Memories...Do Not Open",
-      image: "https://i.scdn.co/image/ab67616d000048510c13d3d5a503c84fcc60ae94",
-    },
+
     {
       title: "Good Riddance (Time of Your Life)",
       artist: "Green Day",

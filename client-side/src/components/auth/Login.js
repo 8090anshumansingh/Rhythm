@@ -4,8 +4,10 @@ import "../../styles/login.css";
 import axios from "../../axios.js";
 import { useState } from "react";
 import Navbar from "../Navbars/Navbar.js";
+import { useHistory } from "react-router-dom";
 
 function Login() {
+  const history = useHistory();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -32,6 +34,9 @@ function Login() {
         password: "",
       });
       console.log(res.data);
+      if (res.data === "login") {
+        history.push("/search");
+      }
       setMsg(res.data);
       if (res.data === "login") {
         setIsValid(true);

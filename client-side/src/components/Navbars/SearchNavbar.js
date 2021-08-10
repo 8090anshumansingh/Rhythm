@@ -1,17 +1,24 @@
 import React from "react";
 import "../../styles/searchNavbar.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatIcon from "@material-ui/icons/Chat";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 function SearchNavbar() {
+  const history = useHistory();
+  const logoClickHandler = () => {
+    history.push("/");
+  };
   return (
     <div className="searchNavbar">
       <nav className="navbar navbar-expand-lg navbar-light navbar1">
         <div className="container ">
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <h1 className="navbar-heading">Rhythm</h1>
+            <h1 className="navbar-heading" onClick={logoClickHandler}>
+              Rhythm
+            </h1>
+
             <ul className="navbar-nav ulc ">
               <li className="nav-item">
                 <div className="navbar-icons">

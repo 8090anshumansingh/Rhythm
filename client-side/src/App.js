@@ -4,6 +4,7 @@ import "./App.css";
 import Login from "./components/auth/Login.js";
 import Register from "./components/auth/Register.js";
 import Search from "./components/search/search.js";
+import Home from "./components/home/home.js";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/login" component={Login} />
-          <Route exact path="/" component={Search} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/register" component={Register} />
         </Switch>

@@ -538,71 +538,21 @@ function Search() {
     fetchHindiSongs();
   }, []);
 
-  // const [audio, setAudio] = useState({
-  //   audio: new Audio(),
-  // });
-
-  // setSongs((prev) => {
-  //   var newArray = prev;
-  //   newTracks.forEach((n) => {
-  //     newArray.push(n);
-  //   });
-  //   return newArray;
-  // });
-
-  // setSongs((prev) => {
-  //   var newArray = prev;
-  //   newTracks.forEach((n) => {
-  //     newArray.push(n);
-  //   });
-  //   return newArray;
-  // });
-  // setSongs(newTracks);
-
   const [sendTrack, setSendTrack] = useState(null);
 
   const playAudio = (index) => {
     executeScroll();
     if (songs[index].isPlaying === true) {
-      // songs[index].audio.pause();
     } else {
       setSendTrack(songs[index]);
-
-      // var stopIndex = -1;
-      // songs.forEach((s, i) => {
-      //   if (s.isPlaying === true && i !== index) {
-      //     stopIndex = i;
-      //     return;
-      //   }
-      // });
-      //
-      // setSongs((prev) => {
-      //   return prev.map((p, i) =>
-      //     i !== index && p.isPlaying === true
-      //       ? { ...p, isPlaying: !p.isPlaying }
-      //       : p
-      //   );
-      // });
-
-      // if (stopIndex !== -1) {
-      //   // songs[stopIndex].audio.pause();
-      // }
-
-      // songs[index].audio.play();
     }
-
-    // setSongs((prev) => {
-    //   return prev.map((p, i) =>
-    //     i === index ? { ...p, isPlaying: !p.isPlaying } : p
-    //   );
-    // });
   };
 
-  const playingHandler = (title1) => {
+  const playingHandler = (title1, album1) => {
     executeScroll();
     setSongs((prev) => {
       return prev.map((p, i) =>
-        p.title !== title1 && p.isPlaying === true
+        p.title !== title1 || (p.album !== album1 && p.isPlaying === true)
           ? { ...p, isPlaying: false }
           : p
       );
@@ -610,14 +560,16 @@ function Search() {
 
     setSongs((prev) => {
       return prev.map((p) =>
-        p.title === title1 ? { ...p, isPlaying: true } : p
+        p.title === title1 && p.album === album1 ? { ...p, isPlaying: true } : p
       );
     });
   };
-  const pausingHandler = (title1) => {
+  const pausingHandler = (title1, album1) => {
     setSongs((prev) => {
       return prev.map((p) =>
-        p.title === title1 ? { ...p, isPlaying: false } : p
+        p.title === title1 && p.album === album1
+          ? { ...p, isPlaying: false }
+          : p
       );
     });
   };
@@ -628,9 +580,29 @@ function Search() {
     return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   }
 
+  const [allChecked, setAllChecked] = useState(true);
+
+  const allChangeHandler = (event) => {
+    setPage(0);
+    setSelected(null);
+    if (event.target.checked === true) {
+      setAllChecked(true);
+      setArtistOptions((prev) => {
+        return prev.map((li) =>
+          li.tick === true ? { ...li, tick: false } : li
+        );
+      });
+      setFilter((prev) => {
+        prev.artists = [];
+        return prev;
+      });
+    }
+  };
+
   const artistChangeHandler = (event) => {
     setPage(0);
     setSelected(null);
+    setAllChecked(false);
     const value = event.target.value;
     const curr = filter.artists;
     if (event.target.checked === true) {
@@ -660,24 +632,16 @@ function Search() {
     }
   };
   const [selected, setSelected] = useState(null);
-  // const resetFilters = () => {
-  //   setArtistOptions((prev) => {
-  //     return prev.map((li) => (li.tick === true ? { ...li, tick: false } : li));
-  //   });
-  //   setSongs(allSongs);
-  // };
 
   const searchSelectHandler = (value) => {
-    // console.log(value);
     setSelected(value);
-
-    // setSongs(allSongs);
-    // resetFilters();
   };
 
   const searchButtonHandler = () => {
     setPage(0);
     var current = allSongs.filter((s) => s.title === selected);
+
+    setAllChecked(false);
 
     setFilter((prev) => {
       prev.artists = [];
@@ -697,6 +661,7 @@ function Search() {
       return;
     }
     if (filter.artists.length === 0) {
+      setAllChecked(true);
       setSongs(allSongs);
     } else {
       var currentSongs = allSongs.filter((s) =>
@@ -736,6 +701,16 @@ function Search() {
           <div className="left">
             <div className="filter-section">
               <h5>Artists</h5>
+              <div className="artistBox">
+                <GreenCheckbox
+                  onChange={allChangeHandler}
+                  value="All"
+                  checked={allChecked}
+                />
+                <label htmlFor="loc" className="para">
+                  All
+                </label>
+              </div>
               {artistOptions.map((a) => (
                 <div className="artistBox">
                   <GreenCheckbox
@@ -828,11 +803,12 @@ function Search() {
           {sendTrack !== null && (
             <div className="section3">
               <LowerBar
-                key={sendTrack.title}
+                key={sendTrack.album}
                 title={sendTrack.title}
                 artist={sendTrack.artist}
                 image={sendTrack.image}
                 audio={sendTrack.audio}
+                album={sendTrack.album}
                 onPlaying={playingHandler}
                 onPausing={pausingHandler}
               />
@@ -845,38 +821,3 @@ function Search() {
 }
 
 export default Search;
-
-// <PauseIcon
-//   onClick={() => {
-//     playAudio(i);
-//   }}
-//   style={{ color: "white" }}
-// />
-
-// <div className="filter-section">
-//   <h5>Genres</h5>
-//   <div className="genreBox">
-//     <input type="checkbox" id="loc" />
-//     <label htmlFor="loc" className="para">
-//       Pop
-//     </label>
-//   </div>
-//   <div className="genreBox">
-//     <input type="checkbox" id="loc" />
-//     <label htmlFor="loc" className="para">
-//       Rock
-//     </label>
-//   </div>
-//   <div className="genreBox">
-//     <input type="checkbox" id="loc" />
-//     <label htmlFor="loc" className="para">
-//       BollyWood
-//     </label>
-//   </div>
-//   <div className="genreBox">
-//     <input type="checkbox" id="loc" />
-//     <label htmlFor="loc" className="para">
-//       k-Pop
-//     </label>
-//   </div>
-// </div>

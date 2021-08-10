@@ -4,6 +4,7 @@ import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 
 function LowerBar(props) {
+  console.log(props);
   const player = React.useRef(null);
   return (
     <div className="lowerBar">
@@ -16,10 +17,10 @@ function LowerBar(props) {
         autoplay
         loop
         onPlay={() => {
-          props.onPlaying(props.title);
+          props.onPlaying(props.title, props.album);
         }}
         onPause={() => {
-          props.onPausing(props.title);
+          props.onPausing(props.title, props.album);
         }}
         onCanPlay={() => {
           player.current.audio.current.play();
