@@ -16,11 +16,19 @@ import {
   getDarshan,
   getSheeran,
   getTwilight,
+  createLord,
+  getAll,
+  giveId,
+  likeSong,
 } from "../controllers/song.controllers.js";
 
+router.post("/create/lord", createLord);
+router.post("/giveId", giveId);
+router.post("/likeSong", likeSong);
 router.post("/user/register", registerUser);
 router.post("/user/login", loginUser);
 router.get("/allSongs/lordHuron", getLordHuron);
+router.get("/allSongs", getAll);
 router.get("/allSongs/hindiSongs", getHindiSongs);
 router.get("/allSongs/decadeBest", getDecadeBest);
 router.get("/allSongs/yearBest", getYearBest);

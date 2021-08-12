@@ -103,13 +103,14 @@ function Search() {
   });
 
   useEffect(() => {
-    const fetchSongs = async () => {
+    const fetchAllSongs = async () => {
       try {
-        const res = await axios.get("/allSongs/lordHuron");
-        // console.log(res.data);
+        const res = await axios.get("/allSongs");
+        // console.log(res.data[0].tracks);
         var newTracks = [];
-        res.data.tracks.map((t) => {
+        res.data[0].tracks.map((t) => {
           var newT = {
+            id: t.id,
             title: t.title,
             artist: t.artist,
             album: t.album,
@@ -117,40 +118,7 @@ function Search() {
             image: t.image,
             audio: t.preview_url,
             isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    const fetchHindiSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/hindiSongs");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
+            isLiked: t.isLiked,
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
@@ -169,373 +137,8 @@ function Search() {
         console.log(e);
       }
     };
-    const fetchHimymSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/himym");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
 
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchSheeranSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/sheeran");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchKKSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/kk");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchTwilightSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/twilight");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchDarshanSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/darshan");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchRecommendedSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/recommends");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchMix1Songs = async () => {
-      try {
-        const res = await axios.get("/allSongs/mix1");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchMix3Songs = async () => {
-      try {
-        const res = await axios.get("/allSongs/mix3");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchMix5Songs = async () => {
-      try {
-        const res = await axios.get("/allSongs/mix5");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchDecadeSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/decadeBest");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchYearSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/yearBest");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    fetchSongs();
-    fetchSheeranSongs();
-    fetchHimymSongs();
-    fetchTwilightSongs();
-    fetchDarshanSongs();
-    fetchRecommendedSongs();
-    fetchMix1Songs();
-    fetchMix3Songs();
-    fetchMix5Songs();
-    fetchDecadeSongs();
-    fetchYearSongs();
-
-    fetchKKSongs();
-    fetchHindiSongs();
+    fetchAllSongs();
   }, []);
 
   const [sendTrack, setSendTrack] = useState(null);
@@ -684,6 +287,30 @@ function Search() {
     setPage(0);
   };
 
+  const likeHandler = async (id) => {
+    console.log(id);
+    // console.log(index);
+    // console.log(title);
+
+    try {
+      const res = await axios.post("/likeSong", { id: id });
+      console.log(res.data);
+    } catch (e) {
+      console.log(e);
+    }
+
+    setSongs((prev) => {
+      return prev.map((t, i) =>
+        t.id === id ? { ...t, isLiked: !t.isLiked } : t
+      );
+    });
+    setAllSongs((prev) => {
+      return prev.map((t, i) =>
+        t.id === id ? { ...t, isLiked: !t.isLiked } : t
+      );
+    });
+  };
+
   return (
     <React.Fragment>
       <SearchNavbar />
@@ -776,7 +403,12 @@ function Search() {
                           (s.album.length > 30 ? "..." : "")}
                       </td>
                       <td>
-                        <FavoriteBorderIcon style={{ color: "white" }} />
+                        <FavoriteBorderIcon
+                          style={{
+                            color: s.isLiked ? "#1db954" : "white",
+                          }}
+                          onClick={() => likeHandler(s.id)}
+                        />
                       </td>
                       <td>{millisToMinutesAndSeconds(s.duration)}</td>
                     </tr>
