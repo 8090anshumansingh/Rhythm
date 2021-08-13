@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatIcon from "@material-ui/icons/Chat";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 function SearchNavbar() {
   const history = useHistory();
@@ -22,7 +23,7 @@ function SearchNavbar() {
             <ul className="navbar-nav ulc ">
               <li className="nav-item">
                 <div className="navbar-icons">
-                  <FavoriteIcon style={{ color: "##1DB954" }} />
+                  <FavoriteIcon style={{ color: "#1DB954" }} />
                 </div>
                 <Link
                   className="nav-link"
@@ -52,6 +53,15 @@ function SearchNavbar() {
                 </div>
                 <Link className="nav-link" to={"/"} style={{ color: "white" }}>
                   Profile
+                </Link>
+              </li>
+              <li className="nav-item">
+                <div className="navbar-icons">
+                  {" "}
+                  <ExitToAppIcon style={{ color: "white" }} />
+                </div>
+                <Link className="nav-link" to={"/"} style={{ color: "white" }}>
+                  Logout
                 </Link>
               </li>
             </ul>

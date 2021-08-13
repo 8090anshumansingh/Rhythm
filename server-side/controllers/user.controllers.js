@@ -11,6 +11,7 @@ export const registerUser = (req, res) => {
       name: newName,
       email: req.body.email,
       password: req.body.password,
+      likedSongs:[]
     };
     bcryptjs.hash(req.body.password, saltRounds, function (err, hash) {
       newUser.password = hash;
@@ -38,7 +39,7 @@ export const loginUser = (req, res) => {
             result
           ) {
             if (result) {
-              res.status(200).send("login");
+              res.status(200).json({data:data , msg:"login"});
             } else {
               res.send("incorrect password or username");
             }
@@ -46,6 +47,69 @@ export const loginUser = (req, res) => {
         } else {
           res.send("incorrect Username");
         }
+      }
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const likeSong = (req, res) => {
+  try {
+    
+    User.find({_id:req.body.userId}, function (err, data) {
+      if (err) {
+        
+         console.log(err);
+      } else {
+         
+
+           data[0].likedSongs.push(req.body.id);            
+
+        data[0].save();
+        res.status(200).send("song liked");
+      }
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const dislikeSong = (req, res) => {
+  try {
+    
+    User.find({_id:req.body.userId}, function (err, data) {
+      if (err) {
+        
+         console.log(err);
+      } else {
+         
+             var index= data[0].likedSongs.indexOf(req.body.id);
+             data[0].likedSongs.splice(index,1);
+                      
+
+        data[0].save();
+        res.status(200).send("song disliked");
+      }
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+
+export const getAllLiked = (req, res) => {
+  try {
+    
+    User.find({_id:req.body.userId}, function (err, data) {
+      if (err) {
+        
+         console.log(err);
+      } else {
+         
+        //  console.log(data[0].likedSongs);
+         
+         res.status(200).json(data[0].likedSongs);
       }
     });
   } catch (e) {

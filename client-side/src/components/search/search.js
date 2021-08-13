@@ -6,21 +6,18 @@ import SearchNavbar from "../Navbars/SearchNavbar.js";
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import PauseIcon from "@material-ui/icons/Pause";
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import LowerBar from "../lowerBar/LowerBar.js";
 import Bar from "./Bar.js";
 import * as ReactBootStrap from "react-bootstrap";
 import { withStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import TablePagination from "@material-ui/core/TablePagination";
+import {useParams} from "react-router-dom";
 
-// var temp = [...new Set(clients)];
 
 const GreenCheckbox = withStyles({
   root: {
@@ -102,48 +99,37 @@ function Search() {
     artists: [],
   });
 
+  // const [userId, setUserId]= useState("");
+const params= useParams();
+// console.log(params.userId);
+// setUserId(params.userId);
+
+const [likedTracks,setLikedTracks]= useState([]);
+
   useEffect(() => {
-    const fetchSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/lordHuron");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
 
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-
-        // setLoading(true);
-      } catch (e) {
+const fetchAllLiked=async ()=>{
+  try{
+     const res= await axios.post("/getAllLiked",{userId:params.userId});
+      console.log(res.data);
+     setLikedTracks(res.data);
+     
+  }
+  catch(e){
         console.log(e);
-      }
-    };
+  }
+}
 
-    const fetchHindiSongs = async () => {
+
+
+    const fetchAllSongs = async () => {
       try {
-        const res = await axios.get("/allSongs/hindiSongs");
-        // console.log(res.data);
+        const res = await axios.get("/allSongs");
+        // console.log(res.data[0].tracks);
         var newTracks = [];
-        res.data.tracks.map((t) => {
+        res.data[0].tracks.map((t) => {
           var newT = {
+            id: t.id,
             title: t.title,
             artist: t.artist,
             album: t.album,
@@ -151,10 +137,11 @@ function Search() {
             image: t.image,
             audio: t.preview_url,
             isPlaying: false,
+            
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-        newTracks = [...new Set(newTracks)];
+        // newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -163,379 +150,17 @@ function Search() {
           setAllSongs((prev) => {
             return [...prev, n];
           });
+
+          
         });
         setLoading(true);
       } catch (e) {
         console.log(e);
       }
     };
-    const fetchHimymSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/himym");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
 
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchSheeranSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/sheeran");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchKKSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/kk");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchTwilightSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/twilight");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchDarshanSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/darshan");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchRecommendedSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/recommends");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchMix1Songs = async () => {
-      try {
-        const res = await axios.get("/allSongs/mix1");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchMix3Songs = async () => {
-      try {
-        const res = await axios.get("/allSongs/mix3");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchMix5Songs = async () => {
-      try {
-        const res = await axios.get("/allSongs/mix5");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchDecadeSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/decadeBest");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchYearSongs = async () => {
-      try {
-        const res = await axios.get("/allSongs/yearBest");
-        // console.log(res.data);
-        var newTracks = [];
-        res.data.tracks.map((t) => {
-          var newT = {
-            title: t.title,
-            artist: t.artist,
-            album: t.album,
-            duration: t.duration,
-            image: t.image,
-            audio: t.preview_url,
-            isPlaying: false,
-          };
-          if (t.preview_url !== null) newTracks.push(newT);
-        });
-        newTracks = [...new Set(newTracks)];
-        newTracks.forEach((n) => {
-          setSongs((prev) => {
-            return [...prev, n];
-          });
-
-          setAllSongs((prev) => {
-            return [...prev, n];
-          });
-        });
-        // setLoading(true);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    fetchSongs();
-    fetchSheeranSongs();
-    fetchHimymSongs();
-    fetchTwilightSongs();
-    fetchDarshanSongs();
-    fetchRecommendedSongs();
-    fetchMix1Songs();
-    fetchMix3Songs();
-    fetchMix5Songs();
-    fetchDecadeSongs();
-    fetchYearSongs();
-
-    fetchKKSongs();
-    fetchHindiSongs();
+     fetchAllLiked();
+    fetchAllSongs();
   }, []);
 
   const [sendTrack, setSendTrack] = useState(null);
@@ -634,6 +259,7 @@ function Search() {
   const [selected, setSelected] = useState(null);
 
   const searchSelectHandler = (value) => {
+    
     setSelected(value);
   };
 
@@ -683,6 +309,55 @@ function Search() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+/////////////////////////////////////////////////////like song///////////////////////////////////////
+    
+
+  const likeHandler = async (id) => {
+    console.log(id);
+    
+
+    if(!likedTracks.includes(id))
+    {
+      try {
+        const res = await axios.post("/likeSong", { id: id,userId:params.userId });
+        console.log(res.data);
+      } catch (e) {
+        console.log(e);
+      }
+   
+      setLikedTracks((prev)=>{
+        return [...prev,id];
+      })
+    }
+
+    else
+    {
+      try {
+        const res = await axios.post("/dislikeSong", { id: id,userId:params.userId });
+        console.log(res.data);
+      } catch (e) {
+        console.log(e);
+      } 
+      setLikedTracks((prev)=>{
+        
+         var newarray= prev.filter((p)=> p!=id);
+         return(newarray);
+       
+      });
+    }
+  
+    
+  };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const dotsClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <React.Fragment>
@@ -700,7 +375,7 @@ function Search() {
         <div className="section2">
           <div className="left">
             <div className="filter-section">
-              <h5>Artists</h5>
+              <h5 style={{color:"white"}}>Artists</h5>
               <div className="artistBox">
                 <GreenCheckbox
                   onChange={allChangeHandler}
@@ -751,7 +426,7 @@ function Search() {
                             onClick={() => {
                               playAudio(i + page * rowsPerPage);
                             }}
-                            style={{ color: "white" }}
+                            style={{ color: "white" ,cursor:"pointer"}}
                           />
                         </td>
                       ) : (
@@ -776,9 +451,12 @@ function Search() {
                           (s.album.length > 30 ? "..." : "")}
                       </td>
                       <td>
-                        <FavoriteBorderIcon style={{ color: "white" }} />
+                        <FavoriteIcon
+                          style={{color: likedTracks.includes(s.id)? "#1db954":"white",cursor:"pointer"}}
+                          onClick={()=>likeHandler(s.id)}
+                        />
                       </td>
-                      <td>{millisToMinutesAndSeconds(s.duration)}</td>
+                      <td><MoreHorizIcon style={{color:"white",cursor:"pointer"}} onClick={dotsClick}/></td>
                     </tr>
                   ))
               ) : (
@@ -787,6 +465,16 @@ function Search() {
                 </div>
               )}
             </table>
+            <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>Add to custom playlist</MenuItem>
+       
+      </Menu>
             <div className="pagination-section">
               <TablePagination
                 component="div"
