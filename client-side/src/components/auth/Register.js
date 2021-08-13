@@ -5,6 +5,7 @@ import axios from "../../axios.js";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Navbar from "../Navbars/Navbar.js";
+import p8 from "../../assets/p8.jpg";
 
 function Register() {
   const history = useHistory();
@@ -43,11 +44,25 @@ function Register() {
     }
   };
 
+  var sectionStyle = {
+    
+      backgroundImage: "url(" + p8 + ")",
+    height: "100%",
+
+ 
+    backgroundPosition: "center",
+    backgroundRepeat:"no-repeat",
+    backgroundSize: "cover",
+    
+  
+  };
+
+
   return (
     <React.Fragment>
       <Navbar />
 
-      <div className="register">
+      <div className="register" style={sectionStyle}>
         <div className="outer">
           <div className="inner">
             <h3>Register</h3>

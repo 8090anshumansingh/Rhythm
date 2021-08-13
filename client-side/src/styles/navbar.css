@@ -1,6 +1,7 @@
 .App .navbar1 {
   display: flex;
   justify-content: space-between;
+  background-color: #161616;
 }
 .App .ulc {
   position: absolute;

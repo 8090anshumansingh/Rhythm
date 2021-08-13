@@ -6,18 +6,15 @@ import SearchNavbar from "../Navbars/SearchNavbar.js";
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import PauseIcon from "@material-ui/icons/Pause";
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import LowerBar from "../lowerBar/LowerBar.js";
 import Bar from "./Bar.js";
 import * as ReactBootStrap from "react-bootstrap";
 import { withStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import TablePagination from "@material-ui/core/TablePagination";
 import {useParams} from "react-router-dom";
 
@@ -345,13 +342,21 @@ const fetchAllLiked=async ()=>{
         
          var newarray= prev.filter((p)=> p!=id);
          return(newarray);
-        // var index= newarray.indexOf(id);
-        // newarray.splice(index,1);
-        // return prev;
+       
       });
     }
   
     
+  };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const dotsClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -370,7 +375,7 @@ const fetchAllLiked=async ()=>{
         <div className="section2">
           <div className="left">
             <div className="filter-section">
-              <h5>Artists</h5>
+              <h5 style={{color:"white"}}>Artists</h5>
               <div className="artistBox">
                 <GreenCheckbox
                   onChange={allChangeHandler}
@@ -451,7 +456,7 @@ const fetchAllLiked=async ()=>{
                           onClick={()=>likeHandler(s.id)}
                         />
                       </td>
-                      <td>{millisToMinutesAndSeconds(s.duration)}</td>
+                      <td><MoreHorizIcon style={{color:"white",cursor:"pointer"}} onClick={dotsClick}/></td>
                     </tr>
                   ))
               ) : (
@@ -460,6 +465,16 @@ const fetchAllLiked=async ()=>{
                 </div>
               )}
             </table>
+            <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>Add to custom playlist</MenuItem>
+       
+      </Menu>
             <div className="pagination-section">
               <TablePagination
                 component="div"
