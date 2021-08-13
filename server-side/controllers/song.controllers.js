@@ -26,29 +26,7 @@ export const createLord = (req, res) => {
     console.log(e);
   }
 };
-export const likeSong = (req, res) => {
-  try {
-    // console.log(req.body);
-    All.find({}, function (data, err) {
-      if (err) {
-        console.log("nooooo");
-        // console.log(err);
-      } else {
-        console.log("yess");
-        data[0].tracks.forEach((s) => {
-          if (s.id === req.body.id) {
-            console.log(s.title);
-            s.isLiked = !s.isLiked;
-          }
-        });
-        data[0].save();
-        res.status(200).send("song liked");
-      }
-    });
-  } catch (e) {
-    console.log(e);
-  }
-};
+
 
 export const getAll = (req, res) => {
   try {
@@ -57,6 +35,7 @@ export const getAll = (req, res) => {
         console.log(err);
       } else {
         {
+          
           res.status(200).json(data);
         }
       }
@@ -73,23 +52,9 @@ export const giveId = (req, res) => {
         console.log(err);
       } else {
         {
-          //  var items = data[0].tracks;
-          //
-          //  items.forEach((item, i) => {item.id=i});
-          //
-          // data[0].tracks=items;
-
           data[0].tracks.forEach((item, i) => {
             item.id = i;
-          });
-
-          // data[0].tracks.map((item, i) => ({
-          //   ...item,
-          //   id: i,
-          // }));
-          // console.log(items);
-          // var items = data[0].tracks.map((item, i) => ({ ...item, id: i }));
-          // data[0].tracks = items;
+          }); 
           data[0].save();
           res.status(200).send("updated");
         }

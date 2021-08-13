@@ -72,6 +72,7 @@ class Bar extends React.Component {
   };
 
   selectHandler = (newval) => {
+    // console.log(newval.target.innerHTML);
     this.props.onSelect(newval.target.innerHTML);
   };
 
@@ -79,7 +80,6 @@ class Bar extends React.Component {
     const { value, suggestions } = this.state;
 
     languages = this.props.songs;
-    // console.log(languages);
     // const { songs } = this.props;
 
     // Autosuggest will pass through all these props to the input.

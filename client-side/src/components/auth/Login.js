@@ -33,15 +33,16 @@ function Login() {
         email: "",
         password: "",
       });
-      console.log(res.data);
-      if (res.data === "login") {
-        history.push("/search");
+      console.log(res.data.data);
+
+      if (res.data.msg === "login") {
+        history.push("/search/"+res.data.data._id);
       }
-      setMsg(res.data);
-      if (res.data === "login") {
+      setMsg(res.data.msg);
+      if (res.data.msg === "login") {
         setIsValid(true);
       }
-      // history.push("/login");
+    
     } catch (e) {
       console.log(e);
     }

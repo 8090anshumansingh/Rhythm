@@ -19,12 +19,14 @@ import {
   createLord,
   getAll,
   giveId,
-  likeSong,
 } from "../controllers/song.controllers.js";
+import { likeSong,getAllLiked,dislikeSong} from "../controllers/user.controllers.js";
 
 router.post("/create/lord", createLord);
 router.post("/giveId", giveId);
 router.post("/likeSong", likeSong);
+router.post("/dislikeSong", dislikeSong);
+router.post("/getAllLiked", getAllLiked);
 router.post("/user/register", registerUser);
 router.post("/user/login", loginUser);
 router.get("/allSongs/lordHuron", getLordHuron);

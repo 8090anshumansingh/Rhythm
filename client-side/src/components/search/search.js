@@ -19,8 +19,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import TablePagination from "@material-ui/core/TablePagination";
+import {useParams} from "react-router-dom";
 
-// var temp = [...new Set(clients)];
 
 const GreenCheckbox = withStyles({
   root: {
@@ -102,7 +102,29 @@ function Search() {
     artists: [],
   });
 
+  // const [userId, setUserId]= useState("");
+const params= useParams();
+// console.log(params.userId);
+// setUserId(params.userId);
+
+const [likedTracks,setLikedTracks]= useState([]);
+
   useEffect(() => {
+
+const fetchAllLiked=async ()=>{
+  try{
+     const res= await axios.post("/getAllLiked",{userId:params.userId});
+      console.log(res.data);
+     setLikedTracks(res.data);
+     
+  }
+  catch(e){
+        console.log(e);
+  }
+}
+
+
+
     const fetchAllSongs = async () => {
       try {
         const res = await axios.get("/allSongs");
@@ -118,11 +140,11 @@ function Search() {
             image: t.image,
             audio: t.preview_url,
             isPlaying: false,
-            isLiked: t.isLiked,
+            
           };
           if (t.preview_url !== null) newTracks.push(newT);
         });
-        newTracks = [...new Set(newTracks)];
+        // newTracks = [...new Set(newTracks)];
         newTracks.forEach((n) => {
           setSongs((prev) => {
             return [...prev, n];
@@ -131,6 +153,8 @@ function Search() {
           setAllSongs((prev) => {
             return [...prev, n];
           });
+
+          
         });
         setLoading(true);
       } catch (e) {
@@ -138,6 +162,7 @@ function Search() {
       }
     };
 
+     fetchAllLiked();
     fetchAllSongs();
   }, []);
 
@@ -237,6 +262,7 @@ function Search() {
   const [selected, setSelected] = useState(null);
 
   const searchSelectHandler = (value) => {
+    
     setSelected(value);
   };
 
@@ -286,29 +312,46 @@ function Search() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+/////////////////////////////////////////////////////like song///////////////////////////////////////
+    
 
   const likeHandler = async (id) => {
     console.log(id);
-    // console.log(index);
-    // console.log(title);
+    
 
-    try {
-      const res = await axios.post("/likeSong", { id: id });
-      console.log(res.data);
-    } catch (e) {
-      console.log(e);
+    if(!likedTracks.includes(id))
+    {
+      try {
+        const res = await axios.post("/likeSong", { id: id,userId:params.userId });
+        console.log(res.data);
+      } catch (e) {
+        console.log(e);
+      }
+   
+      setLikedTracks((prev)=>{
+        return [...prev,id];
+      })
     }
 
-    setSongs((prev) => {
-      return prev.map((t, i) =>
-        t.id === id ? { ...t, isLiked: !t.isLiked } : t
-      );
-    });
-    setAllSongs((prev) => {
-      return prev.map((t, i) =>
-        t.id === id ? { ...t, isLiked: !t.isLiked } : t
-      );
-    });
+    else
+    {
+      try {
+        const res = await axios.post("/dislikeSong", { id: id,userId:params.userId });
+        console.log(res.data);
+      } catch (e) {
+        console.log(e);
+      } 
+      setLikedTracks((prev)=>{
+        
+         var newarray= prev.filter((p)=> p!=id);
+         return(newarray);
+        // var index= newarray.indexOf(id);
+        // newarray.splice(index,1);
+        // return prev;
+      });
+    }
+  
+    
   };
 
   return (
@@ -378,7 +421,7 @@ function Search() {
                             onClick={() => {
                               playAudio(i + page * rowsPerPage);
                             }}
-                            style={{ color: "white" }}
+                            style={{ color: "white" ,cursor:"pointer"}}
                           />
                         </td>
                       ) : (
@@ -403,11 +446,9 @@ function Search() {
                           (s.album.length > 30 ? "..." : "")}
                       </td>
                       <td>
-                        <FavoriteBorderIcon
-                          style={{
-                            color: s.isLiked ? "#1db954" : "white",
-                          }}
-                          onClick={() => likeHandler(s.id)}
+                        <FavoriteIcon
+                          style={{color: likedTracks.includes(s.id)? "#1db954":"white",cursor:"pointer"}}
+                          onClick={()=>likeHandler(s.id)}
                         />
                       </td>
                       <td>{millisToMinutesAndSeconds(s.duration)}</td>
