@@ -41,11 +41,11 @@ export const loginUser = (req, res) => {
             if (result) {
               res.status(200).json({data:data , msg:"login"});
             } else {
-              res.send("incorrect password or username");
+              res.status(200).json({data:NULL,msg:"incorrect password or username"});
             }
           });
         } else {
-          res.send("incorrect Username");
+          res.status(200).json({msg:"incorrect username"});
         }
       }
     });

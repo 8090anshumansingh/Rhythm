@@ -52,14 +52,19 @@ function Login() {
         email: "",
         password: "",
       });
-      console.log(res.data.data);
+        console.log(res.data);
+       
 
       if (res.data.msg === "login") {
+        setIsValid(true);
         history.push("/search/"+res.data.data._id);
       }
-      setMsg(res.data.msg);
-      if (res.data.msg === "login") {
-        setIsValid(true);
+     
+      else{
+        setMsg(res.data);
+        setOpen(false);
+        setIsValid(false);
+       
       }
     
     } catch (e) {
