@@ -5,6 +5,8 @@ import Login from "./components/auth/Login.js";
 import Register from "./components/auth/Register.js";
 import Search from "./components/search/search.js";
 import Home from "./components/home/home.js";
+import LikedList from "./components/lists/LikedList";
+
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/search/:userId" component={Search} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/likedlist/:userId" component={LikedList} />
+
         </Switch>
       </div>
     </Router>

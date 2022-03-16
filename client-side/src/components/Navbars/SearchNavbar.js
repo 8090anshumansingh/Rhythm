@@ -1,16 +1,33 @@
-import React from "react";
-import "../../styles/searchNavbar.css";
+import React, { useEffect, useRef,useState } from "react";import "../../styles/searchNavbar.css";
 import { Link, useHistory } from "react-router-dom";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatIcon from "@material-ui/icons/Chat";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import {useParams} from "react-router-dom";
+import LikedList from "../lists/LikedList.js";
+
+
+
+ 
+
 
 function SearchNavbar() {
   const history = useHistory();
+  // const [id,setId]= useState();
   const logoClickHandler = () => {
     history.push("/");
   };
+
+  const params= useParams();
+  const likedClickHandler = () =>{
+    
+      //  console.log(params.userId);
+      // setId(params.userId);
+      history.push("/likedlist/"+params.userId);
+  };
+
+
   return (
     <div className="searchNavbar">
       <nav className="navbar navbar-expand-lg navbar-light navbar1">
@@ -27,8 +44,8 @@ function SearchNavbar() {
                 </div>
                 <Link
                   className="nav-link"
-                  to={"/login"}
                   style={{ color: "white" }}
+                  onClick={likedClickHandler}
                 >
                   Liked Songs
                 </Link>

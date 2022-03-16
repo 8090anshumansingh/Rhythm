@@ -1,6 +1,6 @@
 import React from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../../styles/login.css";
+import "../../styles/Login.css";
 import axios from "../../axios.js";
 import { useState } from "react";
 import Navbar from "../Navbars/Navbar.js";

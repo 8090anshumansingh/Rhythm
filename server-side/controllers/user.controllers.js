@@ -1,4 +1,6 @@
 import User from "../models/user.model.js";
+import All from "../models/All Songs.model.js";
+
 import bcryptjs from "bcryptjs";
 const saltRounds = 12;
 
@@ -112,6 +114,37 @@ export const getAllLiked = (req, res) => {
          res.status(200).json(data[0].likedSongs);
       }
     });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const  getSongFromId = async (req, res) => {
+  try {
+    var tt =[];
+    // console.log(req.body.userId);
+   User.find({_id:req.body.userId}, function (err, data) {
+      if (err) {
+        
+         console.log(err);
+      } else {
+
+        All.find({}, function (err1,data1){
+           data[0].likedSongs.forEach((e) => {
+              var found= data1[0].tracks.find(t => t.id===e);
+               tt.push(found);
+              
+           });
+          //  console.log(tt);
+           res.status(200).json(tt);
+        });
+        
+       
+        
+      }
+    });
+   
+   
   } catch (e) {
     console.log(e);
   }

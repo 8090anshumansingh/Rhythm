@@ -111,7 +111,7 @@ const [likedTracks,setLikedTracks]= useState([]);
 const fetchAllLiked=async ()=>{
   try{
      const res= await axios.post("/getAllLiked",{userId:params.userId});
-      console.log(res.data);
+      // console.log(res.data);
      setLikedTracks(res.data);
      
   }

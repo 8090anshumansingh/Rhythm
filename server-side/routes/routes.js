@@ -20,7 +20,7 @@ import {
   getAll,
   giveId,
 } from "../controllers/song.controllers.js";
-import { likeSong,getAllLiked,dislikeSong} from "../controllers/user.controllers.js";
+import { likeSong,getAllLiked,dislikeSong,getSongFromId} from "../controllers/user.controllers.js";
 
 router.post("/create/lord", createLord);
 router.post("/giveId", giveId);
@@ -29,6 +29,7 @@ router.post("/dislikeSong", dislikeSong);
 router.post("/getAllLiked", getAllLiked);
 router.post("/user/register", registerUser);
 router.post("/user/login", loginUser);
+router.post("/getSongFromId", getSongFromId);
 router.get("/allSongs/lordHuron", getLordHuron);
 router.get("/allSongs", getAll);
 router.get("/allSongs/hindiSongs", getHindiSongs);
