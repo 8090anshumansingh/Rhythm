@@ -1,0 +1,140 @@
+.likedlist .section1 .search__box {
+    position: absolute;
+    top: 500px;
+    left: 550px;
+    width: 450px;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    /* overflow: hidden; */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+  }
+
+  .likedlist .section1 .search__box input {
+    height: 100%;
+    font-size: 0.9rem;
+    border: none;
+    outline: none;
+    flex: 1;
+  }
+
+  
+.likedlist .section1 .search__box button {
+    height: 100%;
+    border: none;
+    color: white;
+    background: #161616;
+    width: 6rem;
+    cursor: pointer;
+    font-family: "Poppins";
+  }
+  
+  body {
+    background-color: #343a40;
+  }
+
+  .likedlist .section1 {
+    height: 550px;
+    background: url("https://vistapointe.net/images/linkin-park-10.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 110%;
+  }
+
+  .spinner {
+    margin-left: 500px;
+    margin-top: 200px;
+  }
+  .navbar-heading {
+    cursor: pointer;
+  }
+
+  .section2 {
+    display: flex;
+  }
+  .likedlist .section2 .left {
+    flex: 1;
+    border: 2px solid black;
+    background-color:#161616;
+  }
+  .likedlist .section2 .right {
+    flex: 4;
+    /* margin-right: 20px; */
+    /* margin-right: 20px; */
+    width: 100%;
+    height: 644px;
+    background-color: black;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  
+  .likedlist .section2 .boxes {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .boxes td,
+  .boxes th {
+    padding: 8px;
+    color: white;
+    /* height: 40px; */
+  }
+  .likedlist .boxes .rows {
+    align-items: center;
+    height: 70px;
+  
+    border-style: ridge;
+    border-radius: 10px;
+  }
+  
+  /* .boxes tr:nth-child(even) {
+    background-color: black;
+  } */
+  
+  .likedlist .boxes .rows:hover {
+    background-color: #161616;
+  }
+  .likedlist .rows-headinggg {
+    /* background-color: white !important; */
+    /* position: absolute !important; */
+  }
+  
+  .likedlist .boxes th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: black;
+    color: white;
+  }
+  
+  .likedlist .playing-box {
+    background-color: #161616;
+  }
+  
+  .likedlist .filter-section {
+    margin-top: 20px;
+  }
+  .likedlist .para {
+    margin-left: 10px;
+    color:white;
+  }
+  
+  .likedlist .pagination-section {
+    position: static;
+    background-color: white;
+  }
+  .likedlist .right .pagination-section svg {
+    border: 2px solid !important;
+    background-color: #1db954 !important;
+    border-radius: 15px !important;
+  }
+  
+  .likedlist .MuiTypography-colorInherit {
+    color: white !important;
+  }
+  .likedlist .MuiTablePagination-root {
+    background-color: black !important;
+  }

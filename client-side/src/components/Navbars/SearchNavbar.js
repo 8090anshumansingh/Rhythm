@@ -68,8 +68,8 @@ function SearchNavbar() {
                   {" "}
                   <AccountCircleIcon style={{ color: "white" }} />
                 </div>
-                <Link className="nav-link" to={"/"} style={{ color: "white" }}>
-                  Profile
+                <Link className="nav-link" to={"/search/"+params.userId} style={{ color: "white" }}>
+                  Home
                 </Link>
               </li>
               <li className="nav-item">
