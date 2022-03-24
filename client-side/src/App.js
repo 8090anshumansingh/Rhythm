@@ -6,6 +6,7 @@ import Register from "./components/auth/Register.js";
 import Search from "./components/search/search.js";
 import Home from "./components/home/home.js";
 import LikedList from "./components/lists/LikedList";
+import Messenger from "./components/messenger/Messenger.js";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/search/:userId" component={Search} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/likedlist/:userId" component={LikedList} />
+          <Route exact path="/chat/:userId" component={Messenger} />
 
         </Switch>
       </div>

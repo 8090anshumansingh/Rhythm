@@ -119,6 +119,23 @@ export const getAllLiked = (req, res) => {
   }
 };
 
+export const getUserFromId=(req,res)=>{
+  try {
+    User.find({_id:req.body.userId},function(err,data){
+      if(err)
+      {
+        console.log(err);
+      }
+      else
+      {
+        res.status(200).json(data[0]);
+      }
+    })
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export const  getSongFromId = async (req, res) => {
   try {
     var tt =[];

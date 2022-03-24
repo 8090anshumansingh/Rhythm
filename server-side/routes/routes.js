@@ -20,8 +20,16 @@ import {
   getAll,
   giveId,
 } from "../controllers/song.controllers.js";
-import { likeSong,getAllLiked,dislikeSong,getSongFromId} from "../controllers/user.controllers.js";
+import { likeSong,getAllLiked,dislikeSong,getSongFromId,getUserFromId} from "../controllers/user.controllers.js";
+import {createConversation,getConversationFromUser} from "../controllers/conversation.controllers.js";
+import {createMessage,getMessageFromConversation} from "../controllers/message.controllers.js";
 
+
+router.post("/getUserFromId", getUserFromId);
+router.post("/createConversation", createConversation);
+router.post("/createMessage", createMessage);
+router.get("/getConversationFromUser/:userId", getConversationFromUser);
+router.get("/getMessageFromConversation/:conversationId", getMessageFromConversation);
 router.post("/create/lord", createLord);
 router.post("/giveId", giveId);
 router.post("/likeSong", likeSong);

@@ -32,7 +32,7 @@
     font-family: "Poppins";
   }
   
-  body {
+  .likedlist .body {
     background-color: #343a40;
   }
 
