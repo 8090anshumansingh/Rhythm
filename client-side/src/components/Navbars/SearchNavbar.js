@@ -27,6 +27,10 @@ function SearchNavbar() {
       history.push("/likedlist/"+params.userId);
   };
 
+  const chatClickHandler=()=>{
+    history.push("/chat/"+params.userId);
+  }
+
 
   return (
     <div className="searchNavbar">
@@ -57,7 +61,7 @@ function SearchNavbar() {
                 </div>
                 <Link
                   className="nav-link"
-                  to={"/login"}
+                  onClick={chatClickHandler}
                   style={{ color: "white" }}
                 >
                   Chat

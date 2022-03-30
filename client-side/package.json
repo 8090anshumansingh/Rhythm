@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
+    "javascript-time-ago": "^2.3.13",
     "react": "^17.0.2",
     "react-autosuggest": "^10.1.0",
     "react-bootstrap": "^1.6.1",
@@ -17,6 +18,8 @@
     "react-h5-audio-player": "^3.7.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "socket.io-client": "^4.4.1",
+    "timeago.js": "^4.0.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
