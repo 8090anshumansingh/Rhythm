@@ -166,3 +166,103 @@ export const  getSongFromId = async (req, res) => {
     console.log(e);
   }
 };
+
+export const getLikedArtists=(req,res)=>{
+  try {
+    var tt =[];
+    User.find({_id:req.params.userId},function(err,data){
+        if(err)
+        {
+          console.log(err);
+        }
+        else
+        {
+             All.find({}, function (err1,data1){
+              data[0].likedSongs.forEach((e) => {
+                 var found= data1[0].tracks.find(t => t.id===e);
+
+                 if(!tt.includes(found.artist))
+                     tt.push(found.artist);
+               
+               });
+                  // console.log(tt);
+              res.status(200).json(tt);
+         });
+        }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUsersWithArtists=(req,res)=>{
+  try {
+    var tt=[];
+
+      User.find({},function(err,data)
+      {
+        if(err)
+        {
+          console.log(err);
+        }
+        else
+        {
+
+          All.find({}, function(err1, data1){
+
+             data.forEach((d)=>{
+              var objc=
+              {
+                  name:d.name,
+                  artists:[],
+              };
+
+                d.likedSongs.forEach((id)=>{
+
+                  var found= data1[0].tracks.find(t=> t.id===id);
+                  if(!objc.artists.includes(found.artist))
+                  objc.artists.push(found.artist);
+
+                });
+
+                tt.push(objc);
+             });
+             res.status(200).json(tt);
+          });
+          
+          // data.forEach((d)=>{
+          //     var objc=
+          //     {
+          //        name:d.name,
+          //        artists:[],
+          //     };
+              
+          //      d.likedSongs.forEach((id)=>{
+          //          All.find({},function(err1,data1){
+          //            if(err1)
+          //             {
+          //               console.log(err1);
+          //             }
+          //             else
+          //             {
+          //                var found= data1[0].tracks.find(t=> t.id===id);
+          //                if(!objc.artists.includes(found.artist))
+          //                objc.artists.push(found.artist);
+                        
+          //             }
+          //          });
+          //         //  console.log(objc);
+          //      });
+          //     //  console.log(objc);
+          //      tt.push(objc);
+          //  });
+
+           
+        }
+      });
+
+
+  } catch (error) {
+    console.log(error);
+  }
+}
