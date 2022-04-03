@@ -1,4 +1,5 @@
-import React, { useEffect, useRef,useState } from "react";import "../../styles/searchNavbar.css";
+import React, { useEffect, useRef,useState } from "react";
+import "../../styles/searchNavbar.css";
 import { Link, useHistory } from "react-router-dom";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatIcon from "@material-ui/icons/Chat";
@@ -6,6 +7,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import {useParams} from "react-router-dom";
 import LikedList from "../lists/LikedList.js";
+import { BsFillPersonPlusFill } from "react-icons/bs";
 
 
 
@@ -76,6 +78,17 @@ function SearchNavbar() {
                   Home
                 </Link>
               </li>
+
+              <li className="nav-item">
+                <div className="navbar-icons">
+                  {" "}
+                  <BsFillPersonPlusFill style={{ color: "white" }} />
+                </div>
+                <Link className="nav-link" to={"/discover/"+params.userId} style={{ color: "white" }}>
+                  Discover
+                </Link>
+              </li>
+            
               <li className="nav-item">
                 <div className="navbar-icons">
                   {" "}

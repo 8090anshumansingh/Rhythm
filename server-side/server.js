@@ -4,6 +4,11 @@ import Cors from "cors";
 import dotenv from "dotenv";
 import routes from "./routes/routes.js";
 import SpotifyWebApi from "spotify-web-api-node";
+import upload from "./multer.js";
+// const upload=require('./multer');
+import cloudinary from "./cloudinary.js";
+import fs from "fs";
+
 
 dotenv.config();
 const app = express();
@@ -47,6 +52,33 @@ var spotifyApi = new SpotifyWebApi({
 });
 
 app.use("/", routes);
+
+// app.use('/upload-images',upload.array('image'),async(req,res)=>{
+
+//   const uploader=async (path)=> await cloudinary.uploads(path,'Images')
+
+//   if(req.method==='POST')
+//   {
+//     const urls=[];
+//     const files=req.files;
+//     for (const file of files){
+//       const {path}=file;
+//       const newPath=await uploader(path);
+//       urls.push(newPath);
+//       fs.unlinkSync(path);
+//     }
+//     res.status(200).json({
+//       message:'Images Uploaded Successfully',
+//       data:urls
+//     })
+//   }
+//   else{
+//     res.status(500).json({
+//        err:"Image upload failed"
+//     })
+//   }
+
+// })
 
 app.get("/", (req, res) => {
   res.send("Happy Coding");

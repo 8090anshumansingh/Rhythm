@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import All from "../models/All Songs.model.js";
-
+import Conversation from "../models/Conversation.js";
 import bcryptjs from "bcryptjs";
 const saltRounds = 12;
 
@@ -121,6 +121,7 @@ export const getAllLiked = (req, res) => {
 
 export const getUserFromId=(req,res)=>{
   try {
+    
     User.find({_id:req.body.userId},function(err,data){
       if(err)
       {
@@ -166,3 +167,209 @@ export const  getSongFromId = async (req, res) => {
     console.log(e);
   }
 };
+
+export const getLikedArtists=(req,res)=>{
+  try {
+    var tt =[];
+    User.find({_id:req.params.userId},function(err,data){
+        if(err)
+        {
+          console.log(err);
+        }
+        else
+        {
+             All.find({}, function (err1,data1){
+              data[0].likedSongs.forEach((e) => {
+                 var found= data1[0].tracks.find(t => t.id===e);
+
+                 if(!tt.includes(found.artist))
+                     tt.push(found.artist);
+               
+               });
+                  // console.log(tt);
+              res.status(200).json(tt);
+         });
+        }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUsersWithArtists=(req,res)=>{
+  try {
+    var tt=[];
+
+      User.find({},function(err,data)
+      {
+        if(err)
+        {
+          console.log(err);
+        }
+        else
+        {
+
+          All.find({}, function(err1, data1){
+
+             data.forEach((d)=>{
+              var objc=
+              {
+                  id:d._id,
+                  name:d.name,
+                  artists:[],
+              };
+
+                d.likedSongs.forEach((id)=>{
+
+                  var found= data1[0].tracks.find(t=> t.id===id);
+                  if(!objc.artists.includes(found.artist))
+                  objc.artists.push(found.artist);
+
+                });
+
+                tt.push(objc);
+             });
+             res.status(200).json(tt);
+          });
+          
+          // data.forEach((d)=>{
+          //     var objc=
+          //     {
+          //        name:d.name,
+          //        artists:[],
+          //     };
+              
+          //      d.likedSongs.forEach((id)=>{
+          //          All.find({},function(err1,data1){
+          //            if(err1)
+          //             {
+          //               console.log(err1);
+          //             }
+          //             else
+          //             {
+          //                var found= data1[0].tracks.find(t=> t.id===id);
+          //                if(!objc.artists.includes(found.artist))
+          //                objc.artists.push(found.artist);
+                        
+          //             }
+          //          });
+          //         //  console.log(objc);
+          //      });
+          //     //  console.log(objc);
+          //      tt.push(objc);
+          //  });
+
+           
+        }
+      });
+
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const getFriends=async(req,res)=>{
+  try {
+    var tt=[];
+    Conversation.find({},function(err,data){
+       data.forEach((d)=>{
+         if(d.members[0]===req.params.userId)
+         {
+              tt.push(d.members[1]);
+         }
+         else if(d.members[1]===req.params.userId)
+         {
+          tt.push(d.members[0]);
+         }
+       });
+       res.status(200).json(tt);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const getFriendsNew=async(req,res)=>{
+  try {
+    // var tt=[];
+    var tt2=[];
+
+    User.find({},function(err1,data1){
+      Conversation.find({},function(err,data){
+      
+        data.forEach((d)=>{
+          var mem;
+          if(d.members[0]===req.params.userId)
+          {
+            mem=d.members[1];  
+          }
+          else if(d.members[1]===req.params.userId)
+          {
+            mem=d.members[0];
+          }
+        //  console.log(data1);
+            const found= data1.find((r)=>r._id==mem);
+             tt2.push(found);
+        });
+        
+          res.status(200).json(tt2);
+      });
+    });
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const getPosters=async(req,res)=>{
+  var tt=[];
+  try {
+    User.find({_id:req.params.userId},function(err,data){
+      if(err)
+      {
+        console.log(err);
+      }
+      else
+      {
+           All.find({}, function (err1,data1){
+            data[0].likedSongs.forEach((e) => {
+               var found= data1[0].tracks.find(t => t.id===e);
+
+              //  if(!tt.includes(found.artist))
+                  tt.length<12 && tt.push({
+                     image:found.image,
+                     artist:found.artist,
+                     title:found.title
+                   });
+             
+             });
+                // console.log(tt);
+            res.status(200).json(tt);
+       });
+      }
+  });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const setDp=(req,res)=>{
+  try {
+    
+    User.find({_id:req.body.userId},function(err,data){
+      if(err)
+      {
+        console.log(err);
+      }
+      else
+      {
+        data[0].dp=req.body.url;
+        data[0].save();
+        res.status(200).json(data[0]);
+      }
+    })
+  } catch (error) {
+    console.log(error);
+  }
+}

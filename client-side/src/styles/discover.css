@@ -1,0 +1,199 @@
+.discover {
+    /* height: calc(100vh - 70px); */
+    /* height: 100%; */
+    display: flex;
+  }
+
+  .discover{
+      background-color: #343a40;
+  }
+
+  .people
+  {
+      flex: 4;
+  }
+
+  .profile
+  {
+      flex: 8;
+  }
+
+ .discover .card
+{
+    background-color: #343a40;
+}
+  .peopleWrapper
+  {
+   
+    /* height: 100%; */
+
+    
+  }
+
+.discover .upperCard{
+   display: flex;
+   justify-content: space-between;
+   margin: 10px;
+   
+  }
+
+  .discover .lowerCard
+  {
+     
+      display: flex;
+  }
+
+  .matchArray{
+      border-radius: 15px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #1db954;
+      /* background-color: #1db954; */
+      max-width: fit-content;
+     /* padding: 10px; */
+     margin: 10px;
+     /* border-radius: 10px solid ; */
+     /* border-color: #1db954; */
+     padding: 5px;
+  }
+ .discover span
+  {
+      color: white;
+      font-size: small;
+  }
+
+.discover  p
+{
+    color: white;
+}
+
+.discover .peopleWrapper
+{
+    max-width: 500px;
+    overflow-y: scroll;
+}
+
+.discover .people_SearchBox
+{
+    /* position: absolute; */
+  /* top: 500px;
+  left: 550px; */
+  width: 500px;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: white; */
+ 
+  /* overflow: hidden; */
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  /* margin-bottom: 3rem; */
+}
+
+
+
+.discover .people_SearchBox input {
+     background:#394148;
+     /* background-color: white; */
+    height: 100%;
+    font-size: 0.9rem;
+    border: none;
+    outline: none;
+    flex: 1;
+    color:  rgb(224, 208, 208);
+  }
+
+ .discover ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(234, 215, 215);
+    opacity: 1; /* Firefox */
+  }
+ 
+     
+ 
+
+  .discover .people_SearchBox button {
+    height: 100%;
+    border: none;
+    color: white;
+    background: #161616;
+    width: 6rem;
+    cursor: pointer;
+    font-family: "Poppins";
+  }
+
+  .profileTop
+{
+    display: flex;
+}
+
+.profile_left
+{
+    flex: 4;
+}
+
+.profile_right
+{
+    flex: 8;
+}
+
+.profileTable
+{
+  margin: 30px;
+ 
+}
+
+.profileImg img
+{
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin-top: 20px;
+  margin-left: 70px;
+}
+.profileImg
+{
+  display: flex;
+  flex-direction: column;
+}
+.profilepicButton
+{
+   width: 30%;
+   height: 30%;
+   margin-left: 10px;
+   /* margin-top: 5px; */
+   /* margin: 10px; */
+}
+
+.profile_right td {
+  color: white;
+}
+
+.topPicks
+{
+  margin-top: 30px;
+}
+
+.topPicksRow1
+{
+  display: flex;
+}
+.topPicksRow2
+{
+  display: flex;
+}
+.profileBottom
+{
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.discover tr
+{
+  color: white;
+}
+
+tr::hover
+{
+  color: white;
+}
+  
