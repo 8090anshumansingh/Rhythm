@@ -20,15 +20,19 @@ import {
   getAll,
   giveId,
 } from "../controllers/song.controllers.js";
-import { likeSong,getAllLiked,dislikeSong,getSongFromId,getUserFromId,getLikedArtists,getUsersWithArtists} from "../controllers/user.controllers.js";
-import {createConversation,getConversationFromUser} from "../controllers/conversation.controllers.js";
+import { likeSong,getAllLiked,dislikeSong,getSongFromId,getUserFromId,getLikedArtists,getUsersWithArtists,getFriends,getPosters,setDp,getFriendsNew} from "../controllers/user.controllers.js";
+import {createConversation,getConversationFromUser,findConversation} from "../controllers/conversation.controllers.js";
 import {createMessage,getMessageFromConversation} from "../controllers/message.controllers.js";
 
-
+router.get("/findConversation/:firstUserId/:secondUserId",findConversation);
+router.get("/getFriendsNew/:userId",getFriendsNew);
+router.post("/setDp", setDp);
 router.post("/getUserFromId", getUserFromId);
 router.post("/createConversation", createConversation);
 router.post("/createMessage", createMessage);
 router.get("/getConversationFromUser/:userId", getConversationFromUser);
+router.get("/getFriends/:userId", getFriends);
+router.get("/getPosters/:userId", getPosters);
 router.get("/getLikedArtists/:userId", getLikedArtists);
 router.get("/getUsersWithArtists", getUsersWithArtists);
 router.get("/getMessageFromConversation/:conversationId", getMessageFromConversation);

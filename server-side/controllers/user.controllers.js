@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import All from "../models/All Songs.model.js";
-
+import Conversation from "../models/Conversation.js";
 import bcryptjs from "bcryptjs";
 const saltRounds = 12;
 
@@ -121,6 +121,7 @@ export const getAllLiked = (req, res) => {
 
 export const getUserFromId=(req,res)=>{
   try {
+    
     User.find({_id:req.body.userId},function(err,data){
       if(err)
       {
@@ -213,6 +214,7 @@ export const getUsersWithArtists=(req,res)=>{
              data.forEach((d)=>{
               var objc=
               {
+                  id:d._id,
                   name:d.name,
                   artists:[],
               };
@@ -262,6 +264,111 @@ export const getUsersWithArtists=(req,res)=>{
       });
 
 
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const getFriends=async(req,res)=>{
+  try {
+    var tt=[];
+    Conversation.find({},function(err,data){
+       data.forEach((d)=>{
+         if(d.members[0]===req.params.userId)
+         {
+              tt.push(d.members[1]);
+         }
+         else if(d.members[1]===req.params.userId)
+         {
+          tt.push(d.members[0]);
+         }
+       });
+       res.status(200).json(tt);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const getFriendsNew=async(req,res)=>{
+  try {
+    // var tt=[];
+    var tt2=[];
+
+    User.find({},function(err1,data1){
+      Conversation.find({},function(err,data){
+      
+        data.forEach((d)=>{
+          var mem;
+          if(d.members[0]===req.params.userId)
+          {
+            mem=d.members[1];  
+          }
+          else if(d.members[1]===req.params.userId)
+          {
+            mem=d.members[0];
+          }
+        //  console.log(data1);
+            const found= data1.find((r)=>r._id==mem);
+             tt2.push(found);
+        });
+        
+          res.status(200).json(tt2);
+      });
+    });
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const getPosters=async(req,res)=>{
+  var tt=[];
+  try {
+    User.find({_id:req.params.userId},function(err,data){
+      if(err)
+      {
+        console.log(err);
+      }
+      else
+      {
+           All.find({}, function (err1,data1){
+            data[0].likedSongs.forEach((e) => {
+               var found= data1[0].tracks.find(t => t.id===e);
+
+              //  if(!tt.includes(found.artist))
+                  tt.length<12 && tt.push({
+                     image:found.image,
+                     artist:found.artist,
+                     title:found.title
+                   });
+             
+             });
+                // console.log(tt);
+            res.status(200).json(tt);
+       });
+      }
+  });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const setDp=(req,res)=>{
+  try {
+    
+    User.find({_id:req.body.userId},function(err,data){
+      if(err)
+      {
+        console.log(err);
+      }
+      else
+      {
+        data[0].dp=req.body.url;
+        data[0].save();
+        res.status(200).json(data[0]);
+      }
+    })
   } catch (error) {
     console.log(error);
   }

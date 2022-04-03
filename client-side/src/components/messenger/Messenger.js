@@ -7,6 +7,9 @@ import ChatOnline from "../chatOnline/ChatOnline.js";
 import axios from "../../axios.js";
 import {useParams} from "react-router-dom";
 import io from "socket.io-client";
+import { RiSendPlaneFill } from "react-icons/ri";
+// import { getFriends } from "../../../../server-side/controllers/user.controllers";
+
 
 function Messenger() {
   const params= useParams();
@@ -16,6 +19,8 @@ function Messenger() {
   const [messages, setMessages]= useState([]);
   const [newMessage, setNewMessage]= useState("");
   const [arrivalMessage,setArrivalMessage]= useState(null);
+  const [onlineUsers,setOnlineUsers]=useState([]);
+  const [friends,setFriends]=useState([]);
   const socket= useRef();
   const scrollRef= useRef();
 
@@ -35,6 +40,17 @@ useEffect(()=>{
       createdAt:Date.now(),
     });
  });
+
+//  const getFriends=async()=>{
+//    try {
+//      const res=await axios.get("/getFriends/"+params.userId);
+//      setFriends(res.data);
+//    } catch (error) {
+//      console.log(error);
+//    }
+//  }
+
+//  getFriends();
 },[]);
 
 useEffect(()=>{
@@ -45,9 +61,15 @@ useEffect(()=>{
 useEffect(()=>{
 socket.current.emit("addUser",params.userId);
 socket.current.on("getUsers",users=>{
-  console.log(users);
+  // console.log(users);
+  var tt=[];
+  users.forEach((f)=>{
+    if(f.userId!==params.userId)
+    tt.push(f.userId);
+  })
+  setOnlineUsers(tt);
 })
-},[params.userId]);
+},[params.userId,friends]);
 
 
   useEffect(()=>{
@@ -106,6 +128,8 @@ socket.current.on("getUsers",users=>{
          console.log(error);
        }
   }
+
+
   
 
 
@@ -117,13 +141,14 @@ socket.current.on("getUsers",users=>{
         <div className="messenger">
              <div className='chatMenu'>
                     <div className="chatMenuWrapper">
-                        <input placeholder='Search for friends' className='chatMenuInput'/>
-                        {conversations.map((c)=>(
-                          <div onClick={()=>setCurrentChat(c)}>
+                      <h3 style={{color:"white"}}>Your Connections</h3>
+                        {/* <input placeholder='Search for friends' className='chatMenuInput'/> */}
+                       {conversations.length>0 ? <><div> {conversations.map((c)=>(
+                          <div onClick={()=>setCurrentChat(c)} className="conversationBox">
                                 <Conversation conversation={c} currentUser={params.userId}/>
                           </div>
                             
-                        ))}
+                        ))}  </div></>: <h5 style={{color:"grey",marginTop:"200px",marginLeft:"100px"}}>No Connections</h5>}
                    </div>
              </div>
              <div className='chatBox'>
@@ -139,26 +164,25 @@ socket.current.on("getUsers",users=>{
                     </div>
                     <div className='chatBoxBottom'>
                       <textarea
+                        
                          className="chatMessageInput"
                          placeholder="write something..."
                          onChange={(e)=>setNewMessage(e.target.value)}
                          value={newMessage}
                        ></textarea>
-                      <button className="chatSubmitButton" onClick={handleSendSubmit}>
-                         Send
-                      </button>
+                       <RiSendPlaneFill className="chatSubmitButton" onClick={handleSendSubmit}/>
+                     
 
                     </div> </>: <span className="noConversationText">Open a conversation to start a chat</span>  }
                     
                 </div>
              </div>
 
-             <div className='chatOnline'>
+                    <div className='chatOnline'>
+                      <h3 style={{color:"white",margin:"10px"}}>Online Connections</h3>
                        <div className='chatOnlineWrapper'>
-                       <ChatOnline/>
-                       <ChatOnline/>
-                       <ChatOnline/>
-                       <ChatOnline/>
+                       <ChatOnline onlineUsers={onlineUsers} currentId={params.userId} setCurrentChat={setCurrentChat}/>
+                      
                        </div>
                     </div>
             

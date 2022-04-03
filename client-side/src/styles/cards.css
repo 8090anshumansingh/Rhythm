@@ -1,0 +1,26 @@
+.cardStyle{
+    width: 10rem;
+    height: max-content;
+    margin: 5px;
+}
+.cardTitle
+{
+   font-size: small;
+   color: white;
+}
+.cardArtist
+{
+    font-size: small;
+    color: white;
+}
+.cardImage
+{
+    transition: transform .2s smooth;
+    margin: 0 auto;
+    
+}
+
+.cardImage:hover
+{
+    transform: scale(1.1);
+}

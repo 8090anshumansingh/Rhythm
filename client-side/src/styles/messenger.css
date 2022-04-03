@@ -1,10 +1,12 @@
 .messenger {
     height: calc(100vh - 70px);
     display: flex;
+    background-color: #343a40;
   }
   
   .chatMenu {
     flex: 3.5;
+    border-right: 1px solid black;
   }
 
   body
@@ -21,6 +23,7 @@
   
   .chatBox {
     flex: 5.5;
+    border-right: 1px solid black;
   }
   
   .chatBoxWrapper {
@@ -44,8 +47,9 @@
   }
   
   .chatMessageInput {
-    width: 80%;
-    height: 90px;
+    width: 100%;
+    height: 50px;
+    /* height: 90px; */
     padding: 10px;
   }
   
@@ -55,8 +59,9 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: teal;
-    color: white;
+    background-color:#343a40;
+    color: #1db954;
+    
   }
   
   .chatOnline {
@@ -77,6 +82,13 @@
     color: rgb(224, 220, 220);
     cursor: default;
   }
+
+ .chatMenuWrapper .conversationBox
+ {
+   overflow-y: scroll;
+ }
+
+ 
   
   @media screen and (max-width: 768px) {
     .chatMenu {
@@ -95,3 +107,4 @@
       flex: 1px;
     }
   }
+
