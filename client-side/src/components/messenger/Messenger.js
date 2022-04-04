@@ -32,7 +32,7 @@ function Messenger() {
 // },[socket])
 
 useEffect(()=>{
- socket.current=io("ws://localhost:8900");
+ socket.current=io("https://socket-rhythm.herokuapp.com");
  socket.current.on("getMessage",data=>{
     setArrivalMessage({
       sender:data.senderId,

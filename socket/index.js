@@ -1,9 +1,21 @@
-const io=require("socket.io")(8900,{
+const express = require("express");
+const Cors = require("cors");
+const dotenv = require("dotenv");
+const app = express();
+
+dotenv.config();
+
+const io=require("socket.io")(process.env.PORT,{
     cors:{
-        origin:"http://localhost:3000",
+        origin:"https://rhythm-music.netlify.app",
     }
 });
+
+app.use(express.json());
+app.use(Cors());
 let users=[];
+
+
 
 const addUsers=(userId,socketId)=>{
     !users.some((user)=> user.userId===userId ) && 
@@ -49,3 +61,11 @@ io.on("connection", (socket) => {
 
     })
 });
+
+app.get("/", (req, res) => {
+    res.send("Happy Coding");
+  });
+
+app.listen(process.env.PORT1, function () {
+    console.log("listening on localhost:" + process.env.PORT1);
+  });
